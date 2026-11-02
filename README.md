@@ -81,6 +81,12 @@ As vendas antigas **não mudam**: cada item vendido guarda o preço e o custo do
 
 Os produtos do catálogo inicial vêm **sem foto**, porque as fotos originais estavam num bucket S3 que não faz parte do código. Até ganharem foto, aparece uma imagem padrão de bolo. Para colocar a foto, use **Editar** no catálogo de produtos. Produtos novos cadastrados com foto já aparecem com ela.
 
+## Começar do zero (apagar os dados de exemplo)
+
+Rode o [`supabase/limpar_dados.sql`](supabase/limpar_dados.sql) no SQL Editor. Ele apaga vendas, clientes, produtos, receitas e ingredientes, e **mantém** as contas de login, as 5 categorias, os tipos de receita, o produto "Bolo de Festa" e o "Cliente balcão", que as telas usam por número. Fotos já enviadas ficam no Supabase em **Storage → produtos**; dá para apagar por lá, selecionando todas.
+
+Para o bolo de festa funcionar, cadastre receitas dos tipos **Massa**, **Recheio** e **Cobertura** (na tela de Registro de Produto). São elas que aparecem como opções na montagem do bolo.
+
 ## Permissões
 
 São as mesmas da API Java, agora garantidas pelo banco (Row Level Security):
