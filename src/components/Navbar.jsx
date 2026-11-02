@@ -10,6 +10,8 @@ export function Navbar(props) {
     const location = useLocation();
     const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
     const [user, setUser] = useState(null);
+    const [menuAberto, setMenuAberto] = useState(false);
+    const irPara = (rota) => { setMenuAberto(false); navigate(rota); };
 
     useEffect(() => {
         try {
@@ -52,7 +54,7 @@ export function Navbar(props) {
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
-                            <h4>Olá, {user.nome || user.name || user.email || 'Usuário'}</h4>
+                            <h4>Olá, <span className={ styles.nomeCompleto }>{user.nome || user.name || user.email || 'Usuário'}</span><span className={ styles.primeiroNome }>{String(user.nome || user.name || user.email || 'Usuário').split(' ')[0]}</span></h4>
                         </div>
                     ) : props.logado && (
                         <div className={ styles.userInfo }>
@@ -65,11 +67,26 @@ export function Navbar(props) {
                     )}
                 </div>
 
-                <div className={ styles.links }>
+                <button
+                    type="button"
+                    className={ styles.menuToggle }
+                    aria-expanded={ menuAberto }
+                    aria-label={ menuAberto ? 'Fechar menu' : 'Abrir menu' }
+                    onClick={() => setMenuAberto(v => !v)}
+                >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                        {menuAberto
+                            ? (<><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></>)
+                            : (<><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></>)}
+                    </svg>
+                    Menu
+                </button>
+
+                <div className={ `${styles.links} ${menuAberto ? styles.aberto : ''}` }>
                     {!props.hideMenuButton && (
                         <button 
                             className={ `${styles.navlink} ${location.pathname === '/menu' ? styles.active : ''}` } 
-                            onClick={() => navigate('/menu')}
+                            onClick={() => irPara('/menu')}
                         >
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <rect x="3" y="3" width="7" height="7"></rect>
@@ -83,7 +100,7 @@ export function Navbar(props) {
                     {!props.hideMenuButton && (
                         <button 
                             className={ `${styles.navlink} ${location.pathname === '/registro-vendas' ? styles.active : ''}` } 
-                            onClick={() => navigate('/registro-vendas')}
+                            onClick={() => irPara('/registro-vendas')}
                         >
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -93,7 +110,7 @@ export function Navbar(props) {
                             Registrar Vendas
                         </button>
                     )}
-                    <button className={ styles.navlink } onClick={handleHelpClick}>
+                    <button className={ styles.navlink } onClick={() => { setMenuAberto(false); handleHelpClick(); }}>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>

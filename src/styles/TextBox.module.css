@@ -49,3 +49,13 @@
   border-radius: 999px;
   box-shadow: 0 4px 12px rgba(74, 20, 5, 0.08);
 }
+@media (max-width: 768px) {
+  .input-container {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

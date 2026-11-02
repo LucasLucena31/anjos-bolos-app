@@ -154,3 +154,47 @@ select:focus {
 .login .input-grid {
   gap: 5px !important;
 }
+/* ===== Celular ===== */
+@media (max-width: 768px) {
+  .pageContainer {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .login,
+  .cadastro {
+    height: auto;
+    padding: 24px 16px 40px;
+    align-items: flex-start;
+  }
+
+  .container,
+  .pageContainer .cadastro .container,
+  .login .container {
+    width: 100% !important;
+    max-width: 520px;
+    height: auto !important;
+    margin: 12px auto 0 !important;
+    padding: 24px 16px !important;
+  }
+
+  .container h1 {
+    font-size: 1.8rem;
+  }
+
+  .input-grid,
+  .input-group {
+    width: 100%;
+  }
+
+  .input-group {
+    padding: 0;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .container .input {
+    width: 100% !important;
+  }
+}

@@ -544,3 +544,32 @@ input[type=number] {
     min-height: 32px;
   }
 }
+
+/* ===== Celular (ajuste final) ===== */
+@media (max-width: 768px) {
+  .input,
+  .select {
+    width: 100% !important;
+    max-width: none;
+    height: auto !important;
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 16px !important;
+  }
+
+  .inputGroup,
+  .produtoInputs,
+  .quantidadeContainer {
+    width: 100%;
+  }
+
+  .adicionarButton,
+  .cadastrarButton {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .imagemSection {
+    align-items: flex-start;
+  }
+}

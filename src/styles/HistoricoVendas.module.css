@@ -486,3 +486,54 @@
         font-weight: 700 !important;
     }
 }
+/* ===== Celular ===== */
+@media (max-width: 900px) {
+    .containerHistoiricoVendas .contentHistoiricoVendas {
+        flex-direction: column;
+        padding: 0 12px 32px;
+        gap: 12px;
+    }
+
+    .containerHistoiricoVendas .contentHistoiricoVendas .filtros {
+        width: 100%;
+        min-height: 0;
+        margin: 16px 0 0;
+        align-self: stretch;
+    }
+
+    .containerHistoiricoVendas .contentHistoiricoVendas .leftContent,
+    .leftContent {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        align-items: stretch;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .containerHistoiricoVendas table {
+        min-width: 640px;
+    }
+}
+
+@media (max-width: 900px) {
+    .containerHistoiricoVendas .tabelaContainer,
+    .tabelaContainer {
+        width: 100%;
+        max-width: none;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .containerHistoiricoVendas .pageTitle,
+    .pageTitle {
+        max-width: none;
+        font-size: 1.5rem;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .containerHistoiricoVendas .contentHistoiricoVendas .leftContent { order: 1; }
+    .containerHistoiricoVendas .contentHistoiricoVendas .filtros { order: 2; }
+}

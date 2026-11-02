@@ -121,3 +121,135 @@ h4 {
     margin: 0;
 }
 
+
+/* ===== Celular e tablet ===== */
+.menuToggle,
+.primeiroNome {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    nav {
+        height: 64px;
+        padding: 0 14px;
+        padding-left: max(14px, env(safe-area-inset-left));
+        padding-right: max(14px, env(safe-area-inset-right));
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    nav img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .logo {
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .userInfo {
+        padding: 6px 10px;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    .userIcon {
+        width: 16px;
+        height: 16px;
+        flex: none;
+    }
+
+    h4 {
+        font-size: 0.92rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 38vw;
+    }
+
+    .nomeCompleto {
+        display: none;
+    }
+
+    .primeiroNome {
+        display: inline;
+    }
+
+    .menuToggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        flex: none;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: none;
+        background-color: #4d2200;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(77, 34, 0, 0.3);
+    }
+
+    .menuToggle svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    nav .links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 12px;
+        right: 12px;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 16px;
+        background: #f3ede9;
+        box-shadow: 0 12px 32px rgba(77, 34, 0, 0.25);
+        z-index: 200;
+    }
+
+    nav .links.aberto {
+        display: flex;
+    }
+
+    .links .navlink {
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+        padding: 14px 16px;
+        font-size: 1rem;
+    }
+
+    .navlink:hover,
+    .navlink.active,
+    .navlink.active:hover {
+        transform: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .logo {
+        flex: 1 1 auto;
+    }
+
+    nav img {
+        flex: none;
+        max-width: none;
+    }
+
+    .menuToggle {
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 900px) {
+    nav img {
+        object-fit: contain;
+    }
+}

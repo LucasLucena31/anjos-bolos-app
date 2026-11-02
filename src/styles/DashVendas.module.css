@@ -368,3 +368,72 @@
 		max-width: 98vw;
 	}
 }
+
+/* ===== Celular ===== */
+@media (max-width: 900px) {
+	.dashContainer {
+		width: 100%;
+		height: auto;
+		min-height: 100vh;
+		overflow: visible;
+	}
+
+	.dashMain,
+	.dashMainLayout {
+		flex-direction: column;
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+
+	.dashContent {
+		width: 100%;
+		height: auto;
+		padding: 16px 12px 32px;
+		overflow: visible;
+	}
+
+	.dashPeriodo {
+		max-width: none;
+		margin-right: 0;
+	}
+
+	.dashPeriodo h2 {
+		font-size: 1.3rem;
+	}
+
+	.periodoInputs {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 10px;
+	}
+
+	.cardsSection,
+	.graficosSection {
+		flex-direction: column;
+		width: 100%;
+		max-width: none;
+	}
+
+	.dashCard {
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+	}
+
+	.graficoSelector {
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.dashGrafico,
+	.graficoPlaceholder {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	canvas {
+		max-width: 100% !important;
+	}
+}

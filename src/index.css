@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: light;
   color: rgba(255, 255, 255, 0.87);
   background-color: #F7F7F7;
 
@@ -65,15 +65,39 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Sempre o tema claro, mesmo com o celular no modo escuro */
+:root {
+  color: #213547;
+  background-color: #ffffff;
+}
+a:hover {
+  color: #747bff;
+}
+button {
+  background-color: #f9f9f9;
+}
+
+/* Fundo claro sempre (o sistema não tem modo escuro) */
+html {
+  background-color: #F7F7F7;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
-  a:hover {
-    color: #747bff;
+
+  h1 {
+    font-size: 2em;
   }
-  button {
-    background-color: #f9f9f9;
+
+  /* inputs com fonte >= 16px evitam o zoom automático do iPhone */
+  input, select, textarea {
+    font-size: 16px;
   }
 }

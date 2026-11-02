@@ -127,3 +127,28 @@ select:focus {
   padding: 10px 22px !important;
   font-size: 1.3rem !important;
 }
+
+/* ===== Celular ===== */
+@media (max-width: 768px) {
+  .pageContainer {
+    overflow: visible;
+  }
+
+  .cadastro {
+    padding: 16px 12px 40px;
+  }
+
+  .container {
+    padding: 20px 16px 28px;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  select,
+  .container .input {
+    width: 100% !important;
+  }
+}

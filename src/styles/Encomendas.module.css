@@ -468,3 +468,46 @@
 }
 
 
+
+/* ===== Celular ===== */
+@media (max-width: 900px) {
+    .contentEncomendas {
+        flex-direction: column;
+        padding: 0 12px 32px;
+        gap: 12px;
+    }
+
+    .filtros {
+        width: 100%;
+        min-height: 0;
+        margin: 16px 0 0;
+        align-self: stretch;
+    }
+
+    .leftContent {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        padding-top: 8px;
+    }
+
+    .pageTitle {
+        font-size: 1.5rem;
+    }
+
+    .tabela {
+        min-width: 680px;
+    }
+
+    .tabela thead th,
+    .tabela tbody td {
+        padding: 10px 8px;
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 900px) {
+    /* a lista vem primeiro; os filtros ficam logo abaixo */
+    .leftContent { order: 1; }
+    .filtros { order: 2; }
+}

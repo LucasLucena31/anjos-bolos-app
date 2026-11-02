@@ -150,3 +150,38 @@
   overflow: hidden;
 }
 
+
+/* ===== Celular ===== */
+@media (max-width: 768px) {
+  .pageContainer {
+    overflow: visible;
+  }
+
+  .voltarButton {
+    margin-left: 16px;
+  }
+
+  .registroIngredientes {
+    padding: 0 12px 40px;
+  }
+
+  .registroIngredientes h1 {
+    font-size: 1.6rem;
+    margin: 8px 0 20px;
+  }
+
+  .container {
+    width: 100% !important;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .registroIngredientes .input-group {
+    padding: 0 16px;
+  }
+
+  .registroIngredientes select,
+  .registroIngredientes input {
+    width: 100%;
+  }
+}

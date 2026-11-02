@@ -75,3 +75,60 @@
         left: 0;
     }
 }
+
+/* ===== Celular ===== */
+@media (max-width: 900px) {
+    .dashSidebar {
+        width: auto;
+        margin: 12px 12px 0;
+        padding: 8px;
+        border-radius: 14px;
+        border: 2px solid #a86b32;
+        justify-content: flex-start;
+        gap: 8px;
+        overflow-x: auto;
+    }
+
+    .sidebarLogo {
+        display: none;
+    }
+
+    .sidebarMenu {
+        display: flex;
+        gap: 6px;
+        margin: 0;
+    }
+
+    .sidebarMenu li {
+        flex: 1;
+        justify-content: center;
+        padding: 10px 8px;
+        font-size: 0.95rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 10px;
+        white-space: nowrap;
+    }
+
+    .sidebarMenu li.active,
+    .sidebarMenu li:hover {
+        border-left: none;
+        border-bottom: 3px solid #a86b32;
+    }
+
+    .sidebarIcon {
+        margin-right: 6px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .sidebarMenu li {
+        font-size: 0.85rem;
+        padding: 10px 4px;
+    }
+
+    .sidebarIcon {
+        margin-right: 4px;
+    }
+}
