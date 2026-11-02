@@ -1,3 +1,4 @@
+import imagemPadraoProduto from '../assets/bolo.png';
 import React from "react";
 import { Button } from "../components/Button";
 import { Navbar } from "../components/Navbar";
@@ -92,9 +93,7 @@ export function RegistroVendas(props) {
 
         const mapped = content.map(p => ({
           id: p.id,
-          imagem: p.nomeImagem
-            ? p.nomeImagem
-            : '',
+          imagem: p.nomeImagem || imagemPadraoProduto,
           titulo: p.nome || p.titulo || '',
           valor: Number(p.precoFinal || p.preco || p.valor || 0) || 0,
           categoria: catKey

@@ -8,6 +8,9 @@ import api from "../provider/api";
 import { AdvancedFilterIngredientes } from "../components/AdvancedFilterIngredientes";
 import { useEffect } from "react";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { EditarIngredienteModal, custoPorMedida } from "../components/EditarIngredienteModal";
+import { useToast } from "../components/Toast";
+import editarStyles from "../styles/EditarItem.module.css";
 
 export function CatalogoIngredientes(props) {
     useDocumentTitle(props.titulo);
@@ -19,6 +22,16 @@ export function CatalogoIngredientes(props) {
     const [loading, setLoading] = useState(false);
     const [filtroOrdenacao, setFiltroOrdenacao] = useState('');
     const pageSize = 10;
+    const [ingredienteEditando, setIngredienteEditando] = useState(null);
+    const toast = useToast();
+
+    const aoSalvarIngrediente = (atualizado) => {
+        const trocar = (lista) => lista.map((i) => (i.id === atualizado.id ? { ...i, ...atualizado } : i));
+        setIngredientesOriginais(trocar);
+        setIngredientes(trocar);
+        setIngredienteEditando(null);
+        toast.success(`${atualizado.nome} atualizado.`);
+    };
 
     const fetchIngredientes = async (ordenacao = filtroOrdenacao) => {
         setLoading(true);
@@ -122,7 +135,7 @@ export function CatalogoIngredientes(props) {
     ];
 
     // Headers da tabela
-    const tableHeaders = ["Ingrediente", "Custo por Medida"];
+    const tableHeaders = ["Ingrediente", "Embalagem", "Custo por g, mL ou unidade", "Ações"];
 
     const handleSelectChange = (value) => {
         if (value === 'produtos') {
@@ -198,10 +211,16 @@ export function CatalogoIngredientes(props) {
             <>
                 <div className={styles.tableCell}>{ingrediente.nome}</div>
                 <div className={styles.tableCell}>{
-                    ingrediente.custoMedida !== undefined
-                        ? `R$ ${Number(ingrediente.custoMedida).toFixed(2).replace('.', ',')}`
-                        : "-"
+                    ingrediente.valorEmbalagem && ingrediente.quantidadeEmbalagem
+                        ? `${String(ingrediente.quantidadeEmbalagem).replace('.', ',')} ${({ grama: 'g', quilograma: 'kg', mililitro: 'mL', litro: 'L', unidade: 'un.' })[ingrediente.medida] || ''} por R$ ${Number(ingrediente.valorEmbalagem).toFixed(2).replace('.', ',')}`
+                        : "—"
                 }</div>
+                <div className={styles.tableCell}>{custoPorMedida(Number(ingrediente.custoMedida))}</div>
+                <div className={styles.tableCell}>
+                    <button type="button" className={editarStyles.botaoEditar} onClick={() => setIngredienteEditando(ingrediente)}>
+                        Editar
+                    </button>
+                </div>
             </>
         );
     };
@@ -238,6 +257,12 @@ export function CatalogoIngredientes(props) {
                 onPreviousPage={handlePreviousPage}
                 onNextPage={handleNextPage}
                 onPageClick={handlePageClick}
+            />
+
+            <EditarIngredienteModal
+                ingrediente={ingredienteEditando}
+                onClose={() => setIngredienteEditando(null)}
+                onSalvo={aoSalvarIngrediente}
             />
 
             {loading && (

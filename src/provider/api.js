@@ -28,6 +28,7 @@ const statusDoErro = (e) => {
 
 const traduzir = (e) => {
   const m = String(e?.message || e || '');
+  if (/valor_embalagem|quantidade_embalagem|'medida'/i.test(m)) return 'O banco ainda não foi atualizado: rode o arquivo supabase/002_edicao_precos.sql no SQL Editor do Supabase.';
   if (/duplicate key|23505/i.test(m) || e?.code === '23505') return 'Já existe um cadastro com esses dados.';
   if (/row-level security|permission denied/i.test(m)) return 'Seu usuário não tem permissão para isso.';
   if (/violates foreign key/i.test(m)) return 'Este registro está ligado a outros e não pode ser alterado assim.';
@@ -62,6 +63,14 @@ const paraBanco = (v) => {
 };
 const num = (v) => (v == null ? null : Number(v));
 const soDigitos = (s) => String(s ?? '').replace(/\D/g, '');
+// aceita 12.5, "12,50" e "1.234,56"
+const numero = (v) => {
+  if (v == null || v === '') return NaN;
+  if (typeof v === 'number') return v;
+  const t = String(v).trim().replace(/[R$\s]/g, '');
+  return Number(t.includes(',') ? t.replace(/\./g, '').replace(',', '.') : t);
+};
+const MEDIDAS = { grama: 1, quilograma: 1000, mililitro: 1, litro: 1000, unidade: 1 };
 
 function urlImagem(path) {
   if (!path) return null;
@@ -72,7 +81,21 @@ function urlImagem(path) {
 
 const dtoCliente = (c) => ({ id: c.id, nome: c.nome, cpf: c.cpf || '', telefone: c.telefone || '' });
 const dtoCategoria = (c) => ({ id: c.id, nome: c.nome, descricao: c.descricao });
-const dtoIngrediente = (i) => ({ id: i.id, nome: i.nome, custoMedida: num(i.custo_medida) });
+const dtoIngrediente = (i) => ({
+  id: i.id, nome: i.nome, custoMedida: num(i.custo_medida),
+  valorEmbalagem: num(i.valor_embalagem), quantidadeEmbalagem: num(i.quantidade_embalagem), medida: i.medida ?? null
+});
+// Valor e tamanho da embalagem -> custo por g, mL ou unidade (mesma conta do Java).
+// Com "medida" (grama, quilograma, mililitro, litro, unidade) a quantidade vem como a pessoa digitou;
+// sem medida, a quantidade já está em g/mL/unidade.
+function camposIngrediente(body, cfg) {
+  const v = numero(body.valorEmbalagem), q = numero(body.quantidadeEmbalagem);
+  const medida = body.medida ? String(body.medida).toLowerCase() : null;
+  if (!(v > 0)) throw new ApiError(400, 'O valor da embalagem deve ser maior que zero.', cfg);
+  if (!(q > 0)) throw new ApiError(400, 'A quantidade da embalagem deve ser maior que zero.', cfg);
+  if (medida && !MEDIDAS[medida]) throw new ApiError(400, 'Medida inválida.', cfg);
+  return { valor_embalagem: v, quantidade_embalagem: q, medida, custo_medida: v / (q * (medida ? MEDIDAS[medida] : 1)) };
+}
 const dtoProduto = (p) => ({
   id: p.id, nome: p.nome, precoFinal: num(p.preco_final), custoProducao: num(p.custo_producao),
   categoriaProduto: p.categoria?.nome ?? null, categoriaProdutoId: p.categoria_id,
@@ -186,10 +209,18 @@ const rotas = [
   ['GET', /^\/ingredientes\/filtro-nome$/, async (m, { params }, cfg) =>
     checar(await supabase.from('ingrediente').select('*').ilike('nome', `%${params?.nome || ''}%`).order('nome'), cfg).map(dtoIngrediente)],
   ['POST', /^\/ingredientes$/, async (m, { body }, cfg) => {
-    const v = Number(body.valorEmbalagem), q = Number(body.quantidadeEmbalagem);
-    if (!(v > 0)) throw new ApiError(400, 'O valor da embalagem deve ser maior que zero.', cfg);
-    if (!(q > 0)) throw new ApiError(400, 'A quantidade da embalagem deve ser maior que zero.', cfg);
-    return dtoIngrediente(checar(await supabase.from('ingrediente').insert({ nome: String(body.nome || '').trim(), custo_medida: v / q }).select().single(), cfg));
+    const nome = String(body.nome || '').trim();
+    if (!nome) throw new ApiError(400, 'Informe o nome do ingrediente.', cfg);
+    return dtoIngrediente(checar(await supabase.from('ingrediente').insert({ nome, ...camposIngrediente(body, cfg) }).select().single(), cfg));
+  }],
+  ['PUT', /^\/ingredientes\/(\d+)$/, async (m, { body }, cfg) => {
+    const campos = {};
+    if (body.nome != null) {
+      campos.nome = String(body.nome).trim();
+      if (!campos.nome) throw new ApiError(400, 'Informe o nome do ingrediente.', cfg);
+    }
+    if (body.valorEmbalagem != null || body.quantidadeEmbalagem != null) Object.assign(campos, camposIngrediente(body, cfg));
+    return dtoIngrediente(checar(await supabase.from('ingrediente').update(campos).eq('id', m[1]).select().single(), cfg));
   }],
   ['DELETE', /^\/ingredientes\/(\d+)$/, async (m, o, cfg) => { checar(await supabase.from('ingrediente').delete().eq('id', m[1]), cfg); return null; }],
 
@@ -202,12 +233,26 @@ const rotas = [
   ['GET', /^\/produtos\/(\d+)$/, async (m, o, cfg) => dtoProduto(checar(await supabase.from('produto').select(SEL_PRODUTO).eq('id', m[1]).single(), cfg))],
   ['POST', /^\/produtos$/, async (m, { body }, cfg) =>
     dtoProduto(checar(await supabase.from('produto').insert({
-      nome: String(body.nome || '').trim(), preco_final: Number(body.precoFinal) || 0, custo_producao: Number(body.custoProducao) || 0, categoria_id: body.categoriaProdutoId || null
+      nome: String(body.nome || '').trim(), preco_final: numero(body.precoFinal) || 0, custo_producao: numero(body.custoProducao) || 0, categoria_id: body.categoriaProdutoId || null
     }).select(SEL_PRODUTO).single(), cfg))],
-  ['PUT', /^\/produtos\/(\d+)$/, async (m, { body }, cfg) =>
-    dtoProduto(checar(await supabase.from('produto').update({
-      nome: body.nome, preco_final: Number(body.precoFinal) || 0, custo_producao: Number(body.custoProducao) || 0, categoria_id: body.categoriaProdutoId || null
-    }).eq('id', m[1]).select(SEL_PRODUTO).single(), cfg))],
+  // Editar produto: só muda o cadastro. Vendas antigas guardam o preço da época (item_pedido).
+  ['PUT', /^\/produtos\/(\d+)$/, async (m, { body }, cfg) => {
+    const campos = {};
+    if (body.nome != null) {
+      campos.nome = String(body.nome).trim();
+      if (!campos.nome) throw new ApiError(400, 'Informe o nome do produto.', cfg);
+    }
+    if (body.precoFinal != null) {
+      campos.preco_final = numero(body.precoFinal);
+      if (!(campos.preco_final >= 0)) throw new ApiError(400, 'Preço de venda inválido.', cfg);
+    }
+    if (body.custoProducao != null) {
+      campos.custo_producao = numero(body.custoProducao);
+      if (!(campos.custo_producao >= 0)) throw new ApiError(400, 'Custo de produção inválido.', cfg);
+    }
+    if (body.categoriaProdutoId != null) campos.categoria_id = Number(body.categoriaProdutoId) || null;
+    return dtoProduto(checar(await supabase.from('produto').update(campos).eq('id', m[1]).select(SEL_PRODUTO).single(), cfg));
+  }],
   ['DELETE', /^\/produtos\/(\d+)$/, async (m, o, cfg) => { checar(await supabase.from('produto').delete().eq('id', m[1]), cfg); return null; }],
   ['PATCH', /^\/produtos\/(\d+)\/imagem$/, async (m, { body }, cfg) => {
     const arquivo = body instanceof FormData ? body.get('imagem') : body;

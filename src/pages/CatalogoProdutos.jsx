@@ -10,6 +10,9 @@ import { useEffect } from "react";
 import api from "../provider/api";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useSearchParams } from "react-router-dom";
+import { EditarProdutoModal } from "../components/EditarProdutoModal";
+import { useToast } from "../components/Toast";
+import editarStyles from "../styles/EditarItem.module.css";
 
 
 export function CatalogoProdutos(props) {
@@ -24,6 +27,16 @@ export function CatalogoProdutos(props) {
     const [categoriasSelecionadas, setCategoriasSelecionadas] = useState([]);
     const [filtroOrdenacao, setFiltroOrdenacao] = useState('');
     const pageSize = 10;
+    const [produtoEditando, setProdutoEditando] = useState(null);
+    const toast = useToast();
+
+    const aoSalvarProduto = (atualizado) => {
+        const trocar = (lista) => lista.map((p) => (p.id === atualizado.id ? { ...p, ...atualizado } : p));
+        setProdutosOriginais(trocar);
+        setProdutos(trocar);
+        setProdutoEditando(null);
+        toast.success(`${atualizado.nome} atualizado. As vendas anteriores não mudam.`);
+    };
 
     const fetchProdutos = async (ordenacao = filtroOrdenacao) => {
         setLoading(true);
@@ -97,13 +110,13 @@ export function CatalogoProdutos(props) {
                 return categorias.some(categoria => {
                     // Mapear IDs dos filtros para nomes das categorias
                     const mapeamento = {
-                        'bolosTradicionais': 'Bolo Tradicional',
-                        'bebidas': 'Bebida',
+                        'bolosTradicionais': 'Bolos Tradicionais',
+                        'bebidas': 'Bebidas',
                         'salgados': 'Salgados',
-                        'bolosPote': 'Bolo de pote',
-                        'bolosFesta': 'Bolo de Festa'
+                        'bolosPote': 'Bolos de Pote',
+                        'bolosFesta': 'Bolos de Festa'
                     };
-                    return categoriaProduto === mapeamento[categoria];
+                    return String(categoriaProduto).toLowerCase() === String(mapeamento[categoria]).toLowerCase();
                 });
             });
         }
@@ -184,7 +197,7 @@ export function CatalogoProdutos(props) {
     ];
 
     // Headers da tabela
-    const tableHeaders = ["Produto", "Categoria", "Custo de Produção", "Preço Final", "Lucro"];
+    const tableHeaders = ["Produto", "Categoria", "Custo de Produção", "Preço Final", "Lucro", "Ações"];
 
     const handleCategoriaChange = (categoria) => {
         setCategoriasSelecionadas(prev => {
@@ -286,9 +299,7 @@ export function CatalogoProdutos(props) {
 
     const renderTableRow = (produto) => {
         // Calculando o lucro baseado nos dados do banco (precoFinal - custoProducao)
-        const lucro = produto.precoFinal && produto.custoProducao 
-            ? produto.precoFinal - produto.custoProducao 
-            : 0;
+        const lucro = (Number(produto.precoFinal) || 0) - (Number(produto.custoProducao) || 0);
 
         return (
             <>
@@ -310,6 +321,11 @@ export function CatalogoProdutos(props) {
                     {lucro !== undefined
                         ? `R$ ${Number(lucro).toFixed(2).replace('.', ',')}`
                         : "-"}
+                </div>
+                <div className={styles.tableCell}>
+                    <button type="button" className={editarStyles.botaoEditar} onClick={() => setProdutoEditando(produto)}>
+                        Editar
+                    </button>
                 </div>
             </>
         );
@@ -350,6 +366,12 @@ export function CatalogoProdutos(props) {
                 onPreviousPage={handlePreviousPage}
                 onNextPage={handleNextPage}
                 onPageClick={handlePageClick}
+            />
+
+            <EditarProdutoModal
+                produto={produtoEditando}
+                onClose={() => setProdutoEditando(null)}
+                onSalvo={aoSalvarProduto}
             />
 
             {loading && (

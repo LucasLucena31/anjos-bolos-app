@@ -25,17 +25,18 @@ export function RegistroIngredientes(props) {
     const salvar = async e => {
         e.preventDefault();
 
-        let quantidadeConvertida = quantidade;
-
-        if (medida === "quilograma" || medida === "mililitro") {
-            quantidadeConvertida = quantidade * 1000;
+        if (!medida) {
+            setToastErro(true);
+            return;
         }
-        
+
         try {
+            // A conversão (kg → g, L → mL) é feita na camada de dados, que também guarda a embalagem para edição.
             const response = await api.post(`/ingredientes`, {
                 nome: nome,
                 valorEmbalagem: valor,
-                quantidadeEmbalagem: quantidadeConvertida
+                quantidadeEmbalagem: quantidade,
+                medida: medida
             });
             console.log(response.data);
             setNome("");
@@ -82,7 +83,7 @@ export function RegistroIngredientes(props) {
                             className={styles.select}
                         >
                             <option value="">Selecione a medida</option>
-                            {/* <option value="unidade">Unidade</option> */}
+                            <option value="unidade">Unidade</option>
                             <option value="grama">Grama</option>
                             <option value="quilograma">Quilograma</option>
                             <option value="litro">Litro</option>

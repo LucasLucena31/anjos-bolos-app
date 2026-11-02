@@ -26,7 +26,8 @@ As telas são as mesmas. A pasta `src/provider/api.js` responde às mesmas rotas
 1. Crie uma conta em <https://supabase.com> e um **New project** (região **South America (São Paulo)**).
 2. Abra **SQL Editor → New query**, cole todo o [`supabase/schema.sql`](supabase/schema.sql) e clique em **Run**.
 3. Numa nova query, cole o [`supabase/seed.sql`](supabase/seed.sql) e clique em **Run**. Ele cria o catálogo: 18 ingredientes, 5 categorias, 24 produtos, 4 tipos de receita, 7 receitas e o "Cliente balcão".
-4. Em **Project Settings → API**, copie a **Project URL** (só o endereço terminado em `.supabase.co`) e a chave **anon public**.
+4. Numa nova query, cole o [`supabase/002_edicao_precos.sql`](supabase/002_edicao_precos.sql) e clique em **Run**. Ele permite editar preços e guarda o histórico de mudanças.
+5. Em **Project Settings → API**, copie a **Project URL** (só o endereço terminado em `.supabase.co`) e a chave **anon public**.
 
 ### 2. Site na Vercel
 
@@ -66,6 +67,19 @@ Logado como administrador, use a tela **Cadastro de Funcionário**, como antes: 
 > O envio de e-mails que vem com o Supabase é limitado (poucos por hora). Para uma equipe pequena, dá conta. Se precisar de mais, configure um SMTP gratuito (Resend, Brevo) em **Authentication → Emails → SMTP Settings**, ou crie os usuários direto no painel do Supabase com **Auto Confirm**.
 
 ---
+
+## Editar preços sem mexer nas vendas antigas
+
+Nos catálogos de **Produtos** e **Ingredientes**, cada linha tem o botão **Editar**:
+
+- **Produto:** nome, categoria, preço de venda, custo de produção e foto. A janela mostra o lucro e a margem enquanto você digita.
+- **Ingrediente:** nome e o preço da embalagem que você compra (ex.: 1 kg por R$ 6,49). O sistema calcula o custo por grama, mL ou unidade.
+
+As vendas antigas **não mudam**: cada item vendido guarda o preço e o custo do momento da venda. O valor novo vale a partir da próxima venda. Toda mudança fica registrada, com quem mudou e quando, nas tabelas `produto_historico_preco` e `ingrediente_historico_custo` (Supabase → Table Editor).
+
+## Fotos dos produtos
+
+Os produtos do catálogo inicial vêm **sem foto**, porque as fotos originais estavam num bucket S3 que não faz parte do código. Até ganharem foto, aparece uma imagem padrão de bolo. Para colocar a foto, use **Editar** no catálogo de produtos. Produtos novos cadastrados com foto já aparecem com ela.
 
 ## Permissões
 
