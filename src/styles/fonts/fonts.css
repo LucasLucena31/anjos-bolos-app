@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url(../../assets/Montserrat.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'DancingScript';
+  src: url('../../assets/DancingScript.ttf') format('truetype');
+}

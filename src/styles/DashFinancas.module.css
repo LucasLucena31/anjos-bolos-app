@@ -1,0 +1,494 @@
+
+/* Container principal */
+.dashContainer {
+	background: #f9f7f4;
+	min-height: 100vh;
+	font-family: 'Montserrat', Arial, sans-serif;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.dashMain {
+	display: flex;
+	flex-direction: row;
+	margin-top: 0;
+	height: calc(100vh - 80px);
+	width: 100vw;
+	overflow: hidden;
+}
+
+/* Conteúdo principal */
+.dashContent {
+	flex: 1;
+	padding: 16px 32px 0 32px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%;
+.dashMain {
+	overflow: hidden;
+}
+	overflow: hidden;
+}
+
+
+.dashGrafico {
+	box-sizing: border-box;
+	margin: 18px 0 10px 0;
+	width: 100%;
+	max-width: 1100px;
+}
+
+.dashPeriodo h2 {
+	font-size: 1.6rem;
+	color: #4d2c0c;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.periodoInputs {
+	display: flex;
+	gap: 14px;
+}
+
+.periodoDate {
+	display: flex;
+	align-items: center;
+	background: #4d2c0c;
+	border: 1.5px solid #4d2c0c;
+	border-radius: 8px;
+	padding: 5px 18px 5px 14px;
+	font-size: 1.04rem;
+	color: #fff;
+	font-weight: 600;
+	margin-bottom: 6px;
+	min-width: 140px;
+	min-height: 32px;
+	position: relative;
+	cursor: pointer;
+}
+.calendarIcon {
+	font-size: 1.2rem;
+	margin-right: 7px;
+	color: #fff;
+	z-index: 1;
+}
+.datePlaceholder {
+	color: #fff;
+	opacity: 0.85;
+	font-size: 1.04rem;
+	font-weight: 600;
+	font-family: inherit;
+	pointer-events: none;
+	z-index: 1;
+}
+.dateValue {
+	color: #fff;
+	font-size: 1.08rem;
+	font-weight: 600;
+	font-family: inherit;
+	z-index: 1;
+}
+.invisibleDateInput {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 2;
+	border: none;
+	background: transparent;
+}
+
+/* Cards */
+.dashCards {
+	display: flex;
+	gap: 55px;
+	margin: 12px 0 12px 0;
+	width: 100%;
+	max-width: 1100px;
+	justify-content: center;
+}
+.dashCard {
+	background: #fff;
+	border: 1px solid #e0ddd9;
+	border-radius: 12px;
+	flex: 1;
+	min-width: 260px;
+	max-width: 480px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0;
+	box-shadow: 0 2px 8px #0001;
+}
+.dashCardTitle {
+	width: 100%;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 700;
+	padding: 6px 0 4px 0;
+	border-radius: 12px 12px 0 0;
+	letter-spacing: 0.2px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1px;
+}
+
+.dashCardSubtitle {
+	font-size: 0.65rem;
+	font-weight: 500;
+	opacity: 0.9;
+	font-style: italic;
+}
+
+.dashCardTitleLucro {
+	background: #4d2c0c;
+	color: #fff;
+	padding: 10px 0 8px 0;
+}
+.dashCardTitleResumo {
+	background: #4d2c0c;
+	color: #fff;
+}
+.dashCardContent {
+	font-size: 1.18rem;
+	font-weight: 700;
+	color: #6b3a13;
+	text-align: center;
+	padding: 4px 12px 4px 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 1px;
+}
+
+.lucroCardContainer {
+	flex-direction: row;
+	gap: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.lucroSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+	height: 100%;
+	padding: 4px 8px;
+	position: relative;
+}
+
+.lucroSection:first-child {
+	border-right: 1px solid rgba(168, 107, 50, 0.3);
+	position: relative;
+}
+
+.lucroSection:first-child::after {
+	content: '';
+	position: absolute;
+	right: -1px;
+	top: 15%;
+	bottom: 15%;
+	width: 1px;
+	background: rgba(168, 107, 50, 0.2);
+	box-shadow: 1px 0 2px rgba(168, 107, 50, 0.1);
+}
+
+.lucroLabel {
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: #4d2c0c;
+	margin-bottom: 4px;
+	text-align: center;
+}
+
+.lucroValueWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 4px;
+}
+
+.lucroValueMin {
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: #d32f2f;
+	text-align: center;
+}
+
+.lucroValueMax {
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: #2e7d32;
+	text-align: center;
+}
+
+.produtoNome {
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: #6b3a13;
+	text-align: center;
+	margin-top: 4px;
+	padding: 6px 12px;
+	background: rgba(139, 98, 57, 0.08);
+	border-radius: 6px;
+	max-width: 180px;
+	line-height: 1.3;
+}
+
+.resumoCardContainer {
+	flex-direction: column;
+	gap: 0;
+	padding: 4px 8px;
+	width: 100%;
+	height: 100%;
+}
+
+.resumoItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 6px 18px;
+	font-size: 0.9rem;
+	width: 100%;
+	box-sizing: border-box;
+	border-bottom: 1px solid rgba(168, 107, 50, 0.12);
+	transition: all 0.25s ease;
+	cursor: pointer;
+	user-select: none;
+}
+
+.resumoItem:hover {
+	background: rgba(168, 107, 50, 0.05);
+	transform: translateX(2px);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.resumoItem:active {
+	transform: scale(0.99);
+}
+
+.resumoItem:last-child {
+	border-bottom: none;
+}
+
+/* Estados selecionados */
+.resumoEntrada.selected {
+	background: rgba(46, 125, 50, 0.08);
+	border-left: 3px solid #2e7d32;
+	border-radius: 3px;
+	box-shadow: 0 1px 4px rgba(46, 125, 50, 0.12);
+}
+
+.resumoSaida.selected {
+	background: rgba(211, 47, 47, 0.08);
+	border-left: 3px solid #d32f2f;
+	border-radius: 3px;
+	box-shadow: 0 1px 4px rgba(211, 47, 47, 0.12);
+}
+
+.resumoLucro.selected {
+	background: rgba(237, 137, 54, 0.08);
+	border-left: 3px solid #ed8936;
+	border-radius: 3px;
+	box-shadow: 0 1px 4px rgba(237, 137, 54, 0.12);
+}
+
+/* Estados não selecionados */
+.resumoItem.unselected {
+	opacity: 0.55;
+	background: rgba(168, 107, 50, 0.02);
+}
+
+.resumoItem.unselected:hover {
+	opacity: 0.75;
+}
+
+.resumoItemLabel {
+	font-weight: 600;
+	color: #3d2414;
+	font-size: 0.95rem;
+	letter-spacing: 0.2px;
+}
+
+.resumoEntrada .resumoItemValue {
+	font-weight: 700;
+	color: #2e7d32;
+	font-size: 1.1rem;
+}
+
+.resumoSaida .resumoItemValue {
+	font-weight: 700;
+	color: #d32f2f;
+	font-size: 1.1rem;
+}
+
+.resumoLucro .resumoItemValue {
+	font-weight: 700;
+	color: #ed8936;
+	font-size: 1.1rem;
+}
+
+.resumoLabel {
+	font-weight: 600;
+	font-size: 0.8rem;
+}
+
+.resumoValue {
+	font-weight: 700;
+	font-size: 0.85rem;
+}
+
+.infoCard {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 3px 8px;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 4px;
+	border: 1px solid rgba(168, 107, 50, 0.2);
+	flex: 1;
+}
+
+.resumoCard {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 4px 12px;
+	border-radius: 8px;
+	margin-bottom: 2px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	border-left: 4px solid transparent;
+}
+
+.resumoCard:nth-child(1) {
+	background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05));
+	border-left-color: #4caf50;
+}
+
+.resumoCard:nth-child(2) {
+	background: linear-gradient(135deg, rgba(244, 67, 54, 0.15), rgba(244, 67, 54, 0.05));
+	border-left-color: #f44336;
+}
+
+.resumoCard:nth-child(3) {
+	background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.05));
+	border-left-color: #ffc107;
+}
+
+.resumoCard:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.infoLabel {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: #6b3a13;
+}
+
+.infoValue {
+	font-size: 1rem;
+	font-weight: 700;
+	color: #4d2c0c;
+}
+
+.resumoCardLabel {
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 0.3px;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.resumoCard:nth-child(1) .resumoCardLabel {
+	color: #2e7d32;
+}
+
+.resumoCard:nth-child(2) .resumoCardLabel {
+	color: #d32f2f;
+}
+
+.resumoCard:nth-child(3) .resumoCardLabel {
+	color: #f57c00;
+}
+
+.resumoCardValue {
+	font-size: 1.05rem;
+	font-weight: 700;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.resumoCard:nth-child(1) .resumoCardValue {
+	color: #1b5e20;
+}
+
+.resumoCard:nth-child(2) .resumoCardValue {
+	color: #b71c1c;
+}
+
+.resumoCard:nth-child(3) .resumoCardValue {
+	color: #e65100;
+}
+
+/* Gráfico */
+.dashGrafico {
+	margin-top: 18px;
+	width: 100%;
+	max-width: 1100px;
+}
+.dashGrafico h2 {
+	font-size: 1.4rem;
+	color: #4d2c0c;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+.graficoPlaceholder {
+	background: #fff;
+	border: 2px solid #a86b32;
+	border-radius: 14px;
+	padding: 16px;
+	min-height: 140px;
+	height: 220px;
+	margin-bottom: 18px;
+	width: 100%;
+	max-width: 1080px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+	.dashCards {
+		flex-direction: column;
+		gap: 14px;
+	}
+	.dashMain {
+		flex-direction: column;
+		height: auto;
+	}
+	.dashContent {
+		padding: 18px 8px 0 8px;
+	}
+	.dashPeriodo, .dashCards, .dashGrafico {
+		max-width: 98vw;
+	}
+	.dashGrafico, .graficoPlaceholder {
+		max-width: 98vw;
+	}
+}

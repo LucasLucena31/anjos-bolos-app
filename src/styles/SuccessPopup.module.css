@@ -1,0 +1,156 @@
+/* Overlay com blur */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pop-up */
+.popup {
+  background: linear-gradient(135deg, #ffffff 0%, #faf7f4 100%);
+  border-radius: 18px;
+  padding: 28px 35px;
+  box-shadow: 0 12px 40px rgba(107, 50, 0, 0.15),
+              0 0 0 1px rgba(107, 50, 0, 0.05);
+  text-align: center;
+  min-width: 300px;
+  max-width: 360px;
+  border: 1.5px solid #d4c4b4;
+  animation: popIn 0.08s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.7) translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Ícone */
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  animation: iconBounce 0.12s ease-out 0.04s;
+}
+
+@keyframes iconBounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.icon {
+  font-size: 3rem;
+  color: #6b9d4f;
+  filter: drop-shadow(0 3px 10px rgba(107, 157, 79, 0.3));
+}
+
+/* Título */
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #6b3200;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  animation: slideDown 0.1s ease-out 0.06s backwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mensagem */
+.message {
+  font-size: 0.95rem;
+  color: #8b5a2b;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+  animation: slideDown 0.1s ease-out 0.08s backwards;
+}
+
+/* Efeito de brilho decorativo */
+.popup::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  animation: shine 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .popup {
+    min-width: 260px;
+    padding: 24px 28px;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+  }
+}

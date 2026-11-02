@@ -1,0 +1,596 @@
+@import '../styles/fonts/fonts.css';
+
+.containerRegistroVendas {
+    background-color: #F7F7F7;
+
+    h5 {
+        font-family: 'Montserrat';
+        font-size: 15px;
+        margin-bottom: 5%;
+    }
+}
+
+.containerRegistroVendas h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #663b2b;
+    margin-bottom: 0;
+    margin-top: 35px;
+    text-align: center;
+}
+
+h3{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #56270B;
+}
+
+.labelFiltro{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 25px;
+
+    h4 {
+        font-family: 'Montserrat';
+        font-size: 1.2rem;
+        color: #663b2b;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+
+    select {
+        width: 100%;
+        max-width: 320px;
+        padding: 12px 16px;
+        font-size: 0.95rem;
+        font-family: 'Montserrat';
+        font-weight: 500;
+        color: #FFFFFF;
+        border-radius: 12px;
+        outline: none;
+        background: linear-gradient(135deg, #56270B 0%, #3A1709 100%);
+        border: 2px solid #3A1709;
+        box-shadow: 0px 2px 8px rgba(58, 23, 9, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    select:hover {
+        background: linear-gradient(135deg, #663b2b 0%, #4A1F0F 100%);
+        border-color: #4A1F0F;
+        box-shadow: 0px 4px 12px rgba(58, 23, 9, 0.4);
+        transform: translateY(-2px);
+    }
+
+    select:focus {
+        border-color: #4A1F0F;
+        box-shadow: 0 0 0 3px rgba(74, 31, 15, 0.2);
+    }
+
+    select option {
+        background-color: #fff;
+        color: #56270B;
+        padding: 10px;
+    }
+
+    button {
+        width: 150px;
+        padding: 12px 12px;
+        font-size: 1rem;
+        color: #FFFFFF;
+        border-radius: 8px;
+        outline: none;
+        background-color: #4A1F0F;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.8);
+        margin-top: 3.5%;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover:not(.inactiveButton) {
+        background-color: #3A1709;
+    }
+
+    .inactiveButton{
+        background-color: #896A56;
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}
+
+.selecao {
+
+    background-color: #D1C8C2;
+    margin: 2% 10% 0% 10%;
+    padding-top: 0.2%;
+    border-radius: 20px;
+    padding-bottom: 1%;
+
+    h4 {
+        font-family: 'Montserrat';
+        font-size: 1rem;
+        color: #663b2b;
+        font-weight: normal;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+        text-align: left;
+        padding-left: 2.5%;
+    }
+
+    div {   
+
+        label {
+            font-family: 'Montserrat';
+            font-size: 1rem;
+            color: #663b2b;
+            font-weight: normal;
+            margin-right: 10px;
+            display: inline-flex;
+            flex-direction: row;
+
+            input {
+                margin-right: 15px;
+            }
+            
+        }
+    }
+}
+
+.filtro {
+
+    background-color: #D1C8C2;
+    margin: 2% 10% 0% 10%;
+    padding-top: 0.2%;
+    border-radius: 20px;
+    padding-left: 2.5%;
+    padding-bottom: 1%;
+    
+
+    h4 {
+        font-family: 'Montserrat';
+        font-size: 1.2rem;
+        color: #663b2b;
+        font-weight: normal;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+        text-align: left;
+    }
+
+    div {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 7%;
+
+        label {
+            font-family: 'Montserrat';
+            font-size: 1rem;
+            color: #4A4A4A;
+            font-weight: 500;
+            margin-right: 10px;
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
+
+            input {
+                margin-right: 0;
+            }
+            
+        }
+    }
+
+    input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 2.5px solid #663b2b;
+        border-radius: 6px;
+        background-color: white;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input[type="radio"]:hover {
+        border-color: #8b5a2b;
+        transform: scale(1.05);
+    }
+
+    input[type="radio"]:checked {
+        background-color: #663b2b;
+        border-color: #663b2b;
+    }
+
+    input[type="radio"]:checked::after {
+        content: '✓';
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        inset: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.produtos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    row-gap: 20px;
+}
+
+/* Estilos do Modal de Encomenda */
+.modalEncomenda {
+    padding: 28px;
+    width: min(480px, 92vw);
+    max-width: 480px;
+    background: #f5f1ed;
+    border-radius: 15px;
+}
+
+.modalEncomenda h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: #663b2b;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modalEncomendaField {
+    margin-bottom: 15px;
+}
+
+.modalEncomendaField label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #56270B;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.modalEncomendaField input,
+.modalEncomendaField select {
+    width: 100%;
+    padding: 9px 11px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #4a4a4a;
+    background: white;
+    border: 2px solid #c4b5a3;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.modalEncomendaField input:focus,
+.modalEncomendaField select:focus {
+    border-color: #8b5a2b;
+}
+
+.modalEncomendaButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modalEncomendaButtons button {
+    padding: 9px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modalCancelButton {
+    background: #d1c8c2;
+    color: #56270B;
+}
+
+.modalCancelButton:hover {
+    background: #bcae9e;
+}
+
+.modalConfirmButton {
+    background: #663b2b;
+    color: white;
+}
+
+.modalConfirmButton:hover {
+    background: #56270B;
+}
+
+/* Estilos da Seção de Montagem de Bolo de Festa */
+.festaAssembly {
+    color: #663b2b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 10% 40px 10%;
+    padding: 25px 30px 30px 30px;
+    background: linear-gradient(135deg, #F5F1ED 0%, #EFE9E5 100%);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(86, 39, 11, 0.15);
+}
+
+.festaAssembly h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #663b2b;
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
+.festaGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.festaSelects {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.festaSelectGroup {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.festaSelectGroup label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #56270B;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.labelIcon {
+    font-size: 1.5rem;
+    color: #56270B;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+
+.labelIconWhisk {
+    font-size: 1.65rem;
+    color: #56270B;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+
+.festaSelectGroup select {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #56270B;
+    background: white;
+    border: 2px solid #c4b5a3;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.festaSelectGroup select:hover {
+    border-color: #8b5a2b;
+    box-shadow: 0 2px 8px rgba(86, 39, 11, 0.15);
+}
+
+.festaSelectGroup select:focus {
+    border-color: #663b2b;
+    box-shadow: 0 0 0 3px rgba(102, 59, 43, 0.1);
+}
+
+.festaAddButton {
+    padding: 12px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #663b2b 0%, #56270B 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(86, 39, 11, 0.25);
+    align-self: center;
+    width: fit-content;
+    min-width: 180px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.festaAddButton:hover {
+    background: linear-gradient(135deg, #56270B 0%, #3A1709 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(86, 39, 11, 0.35);
+}
+
+.festaAddButton:active {
+    transform: translateY(0);
+}
+
+.montagemAtualCard {
+    margin-top: 20px;
+    background: #FDFCFB;
+    border: 2px solid #a89279;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(86, 39, 11, 0.15);
+}
+
+.montagemAtualCard > strong {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #663b2b;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #EFE9E5;
+}
+
+.montagemDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.montagemItem {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #3A1709;
+    line-height: 1.8;
+    padding: 10px 15px;
+    background: linear-gradient(to right, #F5EFE9 0%, transparent 100%);
+    border-left: 4px solid #8b5a2b;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    text-align: left;
+}
+
+.montagemItem:last-of-type {
+    margin-bottom: 0;
+}
+
+.montagemItem strong {
+    font-weight: bold;
+    color: #56270B;
+    min-width: 85px;
+    flex-shrink: 0;
+}
+
+.montagemItem span {
+    color: #3A1709;
+    font-weight: normal;
+    flex: 1;
+    text-align: left;
+}
+
+.removerButton {
+    margin-top: 15px;
+    padding: 8px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #663b2b 0%, #56270B 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(86, 39, 11, 0.3);
+    width: fit-content;
+    min-width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.removerButton:hover {
+    background: linear-gradient(135deg, #56270B 0%, #3A1709 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(217, 83, 79, 0.4);
+}
+
+.removerButton:active {
+    transform: translateY(0);
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.downloadButton {
+    width: auto;
+    min-width: 240px;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #663b2b 0%, #56270B 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.8);
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+    height: 48px;
+}
+
+.downloadButton:hover {
+    background: linear-gradient(135deg, #56270B 0%, #3A1709 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(86, 39, 11, 0.45);
+}
+
+.downloadButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(86, 39, 11, 0.3);
+}

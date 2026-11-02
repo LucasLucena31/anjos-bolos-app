@@ -1,0 +1,59 @@
+.homeContainer {
+  min-height: 100vh;
+  width: 100vw;
+  background: url('../assets/bolinho15.png') no-repeat center center fixed, #fff;
+  background-size: cover;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.topButtons {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  display: flex;
+  gap: 18px;
+}
+
+.topButton {
+  background: #4d2200;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 22px;
+  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.topButton:hover {
+  background: #6b3200;
+}
+
+.centerContent {
+  position: absolute;
+  top: 40%;
+  left:75%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #4d2200;
+  margin-bottom: 1.2rem;
+}
+
+.subtitle {
+  font-size: 1.47rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #4d2200;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+
+

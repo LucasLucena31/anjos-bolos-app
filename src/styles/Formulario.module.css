@@ -1,0 +1,156 @@
+@import '../styles/fonts/fonts.css';
+
+.pageContainer {
+  background: #f9f7f4;
+  min-height: 100vh;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.headerContainer {
+  padding: 12px 16px 0 16px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.voltarButton {
+  background: #6b3200;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+}
+
+.voltarButton:hover {
+  background: #56270B;
+  transform: translateY(-1px);
+}
+
+.cadastro{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 1000px;
+    height: 480px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #BAB1AB;
+    border-radius: 15px;
+    border: 1px solid #4d2200;
+    margin-top: 2%;
+    gap: 20px;
+}
+
+.container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #663b2b;
+    margin: 0 0 15px 0;
+}
+
+.input-grid {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Estilos específicos para o cadastro de funcionário */
+.pageContainer .cadastro .container {
+    width: 800px;
+    height: 400px;
+    padding: 10px 0;
+    margin-top: 3%;
+    gap: 10px;
+}
+
+.pageContainer .cadastro .container h1 {
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+}
+
+.pageContainer .cadastro .input-grid {
+    gap: 12px;
+}
+
+.input-group {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    gap: 25px;
+}
+
+select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  color: #663b2b;
+  border: 2px solid #c4b5a3;
+  border-radius: 10px;
+  outline: none;
+  background-color: #fff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #663b2b;
+  box-shadow: 0 0 0 3px rgba(102, 59, 43, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Diminuir largura dos inputs dentro do formulário */
+.container .input {
+  width: 280px !important;
+}
+
+/* Diminuir um pouco o botão de cadastrar */
+.container button {
+  min-width: 150px !important;
+  padding: 10px 22px !important;
+  font-size: 1.3rem !important;
+}
+
+/* Altura específica para o card de login */
+.login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login .container {
+  height: 350px !important;
+  margin-top: -100px !important;
+}
+
+/* Gap específico para input-grid na página de login */
+.login .input-grid {
+  gap: 5px !important;
+}

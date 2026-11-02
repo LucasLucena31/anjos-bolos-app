@@ -1,0 +1,240 @@
+/* Modal Overlay */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Content */
+.modalContent {
+    background: linear-gradient(135deg, #ffffff 0%, #f9f7f4 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(77, 44, 12, 0.15);
+    max-width: 480px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    animation: slideIn 0.3s ease-out;
+    border: 2px solid rgba(77, 44, 12, 0.1);
+    position: relative;
+}
+
+/* Close Button Top Right */
+.closeButtonTop {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ffffff;
+    border: 2px solid #4d2c0c;
+    color: #4d2c0c;
+    font-size: 16px;
+    font-weight: normal;
+    width: 26px;
+    height: 26px;
+    border-radius: 25%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Modal Header */
+.modalHeader {
+    background: linear-gradient(135deg, #4d2c0c 0%, #6b3a13 100%);
+    color: white;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #a86b32;
+}
+
+.modalTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.closeButton {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.closeButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Modal Body */
+.modalBody {
+    padding: 32px 30px;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, rgba(77, 44, 12, 0.05) 0%, rgba(168, 107, 50, 0.05) 100%);
+    border-radius: 12px;
+    border-left: 4px solid #a86b32;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(77, 44, 12, 0.08);
+}
+
+.contactItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(77, 44, 12, 0.12);
+    background: linear-gradient(135deg, rgba(77, 44, 12, 0.08) 0%, rgba(168, 107, 50, 0.08) 100%);
+}
+
+.contactItem:last-child {
+    margin-bottom: 0;
+}
+
+.contactIcon {
+    background: linear-gradient(135deg, #4d2c0c 0%, #6b3a13 100%);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-right: 16px;
+    box-shadow: 0 4px 12px rgba(77, 44, 12, 0.2);
+    flex-shrink: 0;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contactLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b3a13;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.contactValue {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #4d2c0c;
+    font-family: 'Montserrat', Arial, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.contactNote {
+    font-size: 0.85rem;
+    color: #a86b32;
+    font-style: italic;
+    margin-top: 2px;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Modal Footer */
+.modalFooter {
+    background: linear-gradient(135deg, rgba(77, 44, 12, 0.05) 0%, rgba(168, 107, 50, 0.05) 100%);
+    padding: 20px 30px;
+    border-top: 1px solid rgba(77, 44, 12, 0.1);
+}
+
+.footerText {
+    font-size: 0.95rem;
+    color: #6b3a13;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+    line-height: 1.5;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .modalContent {
+        margin: 20px;
+        border-radius: 16px;
+    }
+    
+    .modalHeader {
+        padding: 20px 24px;
+    }
+    
+    .modalTitle {
+        font-size: 1.3rem;
+    }
+    
+    .modalBody {
+        padding: 24px 24px;
+    }
+    
+    .contactItem {
+        padding: 14px 16px;
+        margin-bottom: 12px;
+    }
+    
+    .contactIcon {
+        width: 44px;
+        height: 44px;
+        margin-right: 14px;
+    }
+    
+    .modalFooter {
+        padding: 16px 24px;
+    }
+    
+    .footerText {
+        font-size: 0.9rem;
+    }
+}

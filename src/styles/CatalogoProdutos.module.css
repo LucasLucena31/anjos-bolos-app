@@ -1,0 +1,546 @@
+@import '../styles/fonts/fonts.css';
+
+.container {
+    background-color: #F7F7F7;
+    height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container para o filtro avançado */
+.filterAdvancedContainer {
+    margin: 10px auto 20px auto;
+    width: 98%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 15px;
+}
+
+/* Container para o filtro avançado com posicionamento mais à esquerda */
+.filterAdvancedContainerLeft {
+    margin: 10px auto 20px auto;
+    width: 98%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 120px 0 15px;
+}
+
+/* Título e botão registrar */
+.containerTitulo {
+    margin: 0 auto;
+    width: 98%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0 10px 0;
+    flex-shrink: 0;
+}
+
+.titulo {
+    display: flex;
+    align-items: baseline;
+    gap: 0px;
+    position: relative;
+}
+
+.titulo::after {
+    content: '▼';
+    position: absolute;
+    right: 60px;
+    top: 45%;
+    transform: translateY(-50%);
+    color: #56270B;
+    font-size: 1.3rem;
+    pointer-events: none;
+}
+
+/* Ajuste específico para quando "Produtos" está selecionado */
+.titulo:has(select option[value="produtos"]:checked)::after {
+    right: 110px;
+}
+
+.titulo h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #663b2b;
+    margin: 0;
+}
+
+.titulo select {
+    background-color: transparent;
+    border: none;
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #56270B;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    position: relative;
+    padding-right: 50px;
+    padding-bottom: 12px;
+    padding-top: 4px;
+    min-width: 300px;
+    width: auto;
+    line-height: 1.2;
+}
+
+.titulo select:after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #56270B;
+    font-size: 2rem;
+}
+
+.titulo select option {
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #663b2b;
+    background-color: white;
+    padding: 8px;
+}
+
+.titulo select:focus {
+    outline: none;
+}
+
+.registrarButton {
+    background-color: #663b2b;
+    color: white;
+    padding: 14px 14px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+    width: 230px;
+}
+
+.registrarButton:hover {
+    background-color: #76533E;
+}
+
+/* Barra de pesquisa */
+.searchSection {
+    margin: 15px auto;
+    max-width: 1400px;
+    width: 98%;
+    flex-shrink: 0;
+}
+
+.searchContainer {
+    position: relative;
+    width: 100%;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 18px 60px 18px 25px;
+    border: 3px solid #D1C8C2;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    background-color: #D1C8C2;
+    color: #663b2b;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.searchInput::placeholder {
+    color: #8B6F47;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.searchInput:focus {
+    border-color: #663b2b;
+    background-color: #E8DDD6;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #663b2b;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+/* Seção de filtros */
+.filterSection {
+    margin: 20px auto;
+    max-width: 1400px;
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    flex-shrink: 0;
+}
+
+.filterTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: #4A4A4A;
+    margin-bottom: 0;
+    margin-right: 30px;
+    font-weight: 500;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+.filterContainer {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: 35px;
+    align-items: center;
+    line-height: 1.5;
+}
+
+.filterItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.filterCheckbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #663b2b;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filterCheckbox:checked {
+    background-color: #663b2b;
+    border-color: #663b2b;
+}
+
+.filterCheckbox:checked::after {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filterLabel {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #4A4A4A;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+}
+
+/* Cores específicas para cada categoria */
+.filterItem.bolosTradicionais .filterCheckbox {
+    border-color: #663b2b;
+    width: 26px;
+    height: 26px;
+}
+
+.filterItem.bolosTradicionais .filterCheckbox:checked {
+    background-color: #663b2b;
+}
+
+.filterItem.bebidas .filterCheckbox {
+    border-color: #663b2b;
+    width: 26px;
+    height: 26px;
+}
+
+.filterItem.bebidas .filterCheckbox:checked {
+    background-color: #663b2b;
+}
+
+.filterItem.salgados .filterCheckbox {
+    border-color: #663b2b;
+    width: 26px;
+    height: 26px;
+}
+
+.filterItem.salgados .filterCheckbox:checked {
+    background-color: #663b2b;
+}
+
+.filterItem.bolosPote .filterCheckbox {
+    border-color: #663b2b;
+    width: 26px;
+    height: 26px;
+}
+
+.filterItem.bolosPote .filterCheckbox:checked {
+    background-color: #663b2b;
+}
+
+.filterItem.bolosFesta .filterCheckbox {
+    border-color: #663b2b;
+    width: 26px;
+    height: 26px;
+}
+
+.filterItem.bolosFesta .filterCheckbox:checked {
+    background-color: #663b2b;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .containerTitulo {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .titulo h1 {
+        font-size: 3rem;
+    }
+    
+    .titulo select {
+        font-size: 3rem;
+        padding-bottom: 10px;
+        padding-top: 3px;
+        line-height: 1.2;
+    }
+    
+    .searchSection,
+    .filterSection {
+        width: 95%;
+        padding: 15px 0;
+    }
+
+    .filterContainer {
+        gap: 18px;
+    }
+
+    .filterLabel {
+        font-size: 1rem;
+    }
+
+    .searchInput {
+        padding: 15px 50px 15px 18px;
+        font-size: 1rem;
+    }
+
+    .searchInput::placeholder {
+        font-size: 1rem;
+    }
+
+    .searchIcon {
+        font-size: 1.1rem;
+        right: 20px;
+    }
+}
+
+/* Tabela de produtos */
+.tableSection {
+    margin: 10px auto 20px auto;
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+    max-height: 480px;
+}
+
+.tableHeader {
+    background-color: #663b2b;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.tableHeader th {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.tableHeaderCell {
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    flex: 1;
+    font-weight: 600;
+}
+
+.tableBody {
+    flex: 1;
+    overflow-y: auto;
+    background: white;
+}
+
+.tableRow {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+    background-color: white;
+}
+
+.tableRow:nth-child(even) {
+    background-color: white;
+}
+
+.tableRow:hover {
+    background-color: #f5f5f5;
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.tableCell {
+    padding: 12px 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #4a4a4a;
+    text-align: center;
+    flex: 1;
+    font-size: 1rem;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tableCell:first-child {
+    text-align: left;
+    justify-content: flex-start;
+    font-weight: 600;
+}
+
+/* Container para centralização da paginação */
+.paginationWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+/* Estilos de Paginação */
+.paginationContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.paginationButton {
+    background: #663b2b;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginationButton:hover:not(:disabled) {
+    background: #56270B;
+}
+
+.paginationButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.paginationInfo {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin: 0;
+}
+
+.paginationNumber {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #663b2b;
+    background: white;
+    color: #663b2b;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginationNumber:hover:not(:disabled) {
+    background: #663b2b;
+    color: white;
+}
+
+.paginationNumber.active {
+    background: #663b2b;
+    color: white;
+}
+
+.paginationNumber:disabled {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.loadingContainer {
+    text-align: center;
+    padding: 15px;
+    color: #663b2b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+}

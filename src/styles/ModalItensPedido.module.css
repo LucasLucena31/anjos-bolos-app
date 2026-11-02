@@ -1,0 +1,104 @@
+.modalItensContent {
+    background: #F9F6F3;
+    border-radius: 16px;
+    width: 800px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: -20px -22px;
+}
+
+.modalItensHeader {
+    background: linear-gradient(135deg, #663b2B 0%, #56270B 100%);
+    color: #FFFFFF;
+    padding: 20px 24px;
+    border-radius: 16px 16px 0 0;
+    position: relative;
+}
+
+.modalItensHeader h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+.emptyItensState {
+    padding: 60px 28px;
+    text-align: center;
+}
+
+.emptyItensState p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #896A56;
+}
+
+.tableItensWrapper {
+    padding: 16px 24px 24px;
+    overflow-y: auto;
+    max-height: calc(90vh - 100px);
+}
+
+.modalItensTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(86, 39, 11, 0.08);
+}
+
+.modalItensTable thead {
+    background: #D1C8C2;
+}
+
+.modalItensTable thead tr th {
+    padding: 14px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #56270B;
+    text-align: center;
+    border-bottom: 2px solid #E5DED8;
+}
+
+.modalItensTable thead tr th:first-child {
+    text-align: left;
+}
+
+.modalItensTable thead tr th:nth-child(3),
+.modalItensTable thead tr th:nth-child(4) {
+    text-align: right;
+}
+
+.modalItensTable tbody tr td {
+    padding: 12px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #56270B;
+    border-bottom: 1px solid #F0ECE9;
+    text-align: center;
+}
+
+.modalItensTable tbody tr td:first-child {
+    text-align: left;
+}
+
+.modalItensTable tbody tr td:nth-child(3),
+.modalItensTable tbody tr td:nth-child(4) {
+    text-align: right;
+}
+
+.modalItensTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.modalItensTable tbody tr:hover {
+    background-color: #F9F6F3;
+}

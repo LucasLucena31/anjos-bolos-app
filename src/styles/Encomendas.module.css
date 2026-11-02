@@ -1,0 +1,470 @@
+@import '../styles/fonts/fonts.css';
+
+/* Wrapper para select com ícone de cadeado */
+.selectLockWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Ícone de cadeado menor e mais à esquerda */
+/* Ícone de cadeado (ambos) em cinza */
+.lockIcon {
+    position: absolute;
+    right: 2.2em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    font-size: 0.95em;
+    z-index: 2;
+}
+
+/* Cadeado bloqueado menor */
+.lockIcon.locked {
+    font-size: 0.82em;
+}
+
+/* Espaço extra à direita do select para o ícone */
+.statusSelectInline {
+    padding-right: 3em;
+}
+
+
+.containerEncomendas {
+    background-color: #F7F7F7;
+    min-height: 100vh;
+}
+
+.contentEncomendas {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: 0 5%;
+    justify-content: center;
+    gap: 20px;
+}
+
+.filtros {
+    width: 280px;
+    min-height: 400px;
+    background-color: #D1C8C2;
+    border-radius: 16px;
+    border: #56270B 2px solid;
+    padding: 20px 16px;
+    margin-right: 20px;
+    align-self: flex-start;
+    margin-top: 90px;
+}
+
+.filtros h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #663b2b;
+    text-align: center;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: #56270B 2px solid;
+}
+
+.filtroItem {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 16px;
+}
+
+.filtroItem label {
+    font-family: 'Montserrat';
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #56270B;
+    margin-bottom: 6px;
+}
+
+.periodoDate {
+    background-color: #EFE9E5;
+    border: #76533E 2px solid;
+    border-radius: 8px;
+    height: 32px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat';
+    font-size: 0.9rem;
+    color: #56270B;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+    cursor: pointer;
+}
+
+.calendarIcon {
+    position: absolute;
+    left: 10px;
+    color: #56270B;
+    font-size: 16px;
+}
+
+.datePlaceholder {
+    color: #8B7A6E;
+    font-size: 0.9rem;
+}
+
+.dateValue {
+    color: #56270B;
+    font-weight: 500;
+}
+
+.invisibleDateInput {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.filterCompactRow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filtroCompactItem {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.filtroCompactItem label {
+    font-family: 'Montserrat';
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #56270B;
+    margin-bottom: 6px;
+}
+
+.compactSelect {
+    background-color: #EFE9E5;
+    border: #76533E 2px solid;
+    border-radius: 8px;
+    height: 32px;
+    width: 100%;
+    font-family: 'Montserrat';
+    font-size: 0.9rem;
+    color: #56270B;
+    padding: 0 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.compactSelect:focus {
+    outline: none;
+    border-color: #56270B;
+}
+
+.filtroStatusDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background-color: #EFE9E5;
+    border: #76533E 2px solid;
+    border-radius: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.filtroStatusOpcao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-size: 0.9rem;
+    color: #56270B;
+    transition: background-color 0.2s ease;
+}
+
+.filtroStatusOpcao:hover {
+    background-color: #D1C8C2;
+}
+
+.filtroStatusOpcao input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.filtroStatusOpcao label {
+    cursor: pointer;
+    margin: 0;
+    font-weight: normal;
+}
+
+.btnPesquisar {
+    margin-top: 8px;
+    width: 100%;
+    height: 42px;
+    background-color: #56270B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btnPesquisar:hover {
+    background-color: #3d1c08;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(86, 39, 11, 0.3);
+}
+
+.leftContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 30px;
+    max-width: 1100px;
+}
+
+.pageTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #663b2b;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    width: 100%;
+}
+
+.tabelaContainer {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: #D1C8C2;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+    border: #56270B 1px solid;
+    border-radius: 10px;
+}
+
+.tabela thead tr {
+    background-color: #56270B;
+    color: #FFFFFF;
+}
+
+.tabela thead th {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    background-color: #56270B;
+    z-index: 10;
+    border-bottom: 1px solid #D1C8C2;
+}
+
+.tabela thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.tabela thead th:last-child {
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+.tabela tbody tr {
+    border-bottom: 1px solid #D1C8C2;
+    transition: background-color 0.2s ease;
+}
+
+.tabela tbody tr:hover {
+    background-color: #F0E9E6;
+}
+
+.tabela tbody td {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    color: #56270B;
+    background-color: #F9F6F3;
+    text-align: center;
+    border-bottom: 1px solid #D1C8C2;
+}
+
+.tabela tbody td:last-child {
+    text-align: center;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.statusCONFIRMADO {
+    background-color: #E3F2FD;
+    color: #1565C0;
+}
+
+.statusPENDENTE_PAGAMENTO {
+    background-color: #FFF3E0;
+    color: #E65100;
+}
+
+.statusCANCELADO {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+
+.statusFINALIZADO {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+}
+
+.btnExcluir {
+    background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 2px 6px rgba(211, 47, 47, 0.3);
+}
+
+.btnExcluir:hover {
+    background: linear-gradient(135deg, #B71C1C 0%, #8B0000 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+}
+
+.btnExcluir svg {
+    width: 18px;
+    height: 18px;
+}
+
+.statusCell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.statusSelectInline {
+    padding: 8px 12px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: #222 !important;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    box-shadow: none;
+    min-width: 190px;
+    width: auto;
+}
+
+.statusSelectInline:disabled,
+.statusSelectInline[disabled] {
+    color: #222 !important;
+    opacity: 1 !important;
+    background: #f8f8f8;
+    cursor: default;
+}
+.btnIconRound {
+    background: #f5f5f5;
+    color: #7a5230;
+    border: 2px solid #7a5230 !important;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.2s, transform 0.15s, border-color 0.2s;
+    box-shadow: 0 1px 4px rgba(122, 82, 48, 0.10);
+    padding: 0;
+    margin-left: 6px;
+    font-size: 1rem;
+}
+.btnIconRound:focus, .btnIconRound:active {
+    border: 2px solid #7a5230 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(122, 82, 48, 0.13);
+}
+.btnIconRound:hover {
+    background: #f1e7de;
+    color: #5a3a1b;
+    box-shadow: 0 2px 8px rgba(122, 82, 48, 0.18);
+    transform: scale(1.08);
+}
+
+.statusSelectInline:focus {
+    outline: none;
+    border-color: #7a5230;
+}
+
+.statusSelectInline:hover {
+    border-color: #7a5230;
+    background: #faf7f4;
+}
+
+.btnSalvarInline {
+    background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+}
+
+.btnSalvarInline:hover {
+    background: linear-gradient(135deg, #1B5E20 0%, #0D4A14 100%);
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.4);
+}
+
+.emptyMessage {
+    text-align: center;
+    padding: 40px 20px !important;
+    color: #8B7A6E;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+

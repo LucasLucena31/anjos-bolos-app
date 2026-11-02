@@ -1,0 +1,319 @@
+@import '../styles/fonts/fonts.css';
+
+.containerResumoVendas {
+  background-color: #F7F7F7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Estilos para o container do header e botão voltar */
+.headerContainer {
+  padding: 30px 0 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0px;
+
+  button {
+    height: 50%;
+  }
+}
+
+.voltarButton {
+  background: #6b3200;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-left: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
+.voltarButton:hover {
+  background: #8b4513;
+  transform: translateY(-1px);
+}
+
+.pageTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #663b2b;
+  text-align: left;
+  margin: 35px 0 20px 0;
+  padding-left: 20%;
+}
+
+/* ====== CONTEÚDO PRINCIPAL ====== */
+.contentResumoVendas {
+  display: flex;
+  flex-direction: row;
+  padding: 0 5%;
+  justify-content: center;
+  min-height: 70vh; /* flexível */
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 15px auto 0 auto;
+}
+
+.leftContent {
+  flex: 3; /* ocupa mais espaço */
+  display: flex;
+  flex-direction: column;
+}
+
+.rightContent {
+  flex: 1; /* menor que a tabela */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ====== RESUMO / FILTROS ====== */
+.filtros {
+  background-color: #D1C8C2;
+  border-radius: 12px;
+  border: #56270B 2px solid;
+  padding: 0.5rem 0.7rem;
+  color: #56270B;
+
+   h1 {
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+    font-weight: bold;
+   }
+
+   button {
+    margin-top: 0.5rem;
+   }
+}
+
+.filtroItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qtdVendas,
+.tipoVenda {
+  width: 100%;
+  padding: 0.3rem 0;
+  border-bottom: #56270B 1px solid;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-family: 'Montserrat';
+}
+
+.qtdVendas label:first-child,
+.tipoVenda label:first-child {
+  font-weight: bold;
+  color: #56270B;
+}
+
+.qtdVendas label:last-child,
+.tipoVenda label:last-child {
+  font-weight: normal;
+  color: #3A1709;
+}
+
+.nomeCliente {
+  width: 100%;
+  border-bottom: #56270B 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+  padding: 0.3rem 0;
+}
+
+.nomeCliente input {
+  color: #3A1709;
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-family: 'Montserrat';
+  width: 100%;
+  height: 36px;
+  border: 2px solid #76533E;
+  border-radius: 6px;
+  padding: 4px 8px;
+  background-color: #EFE9E5;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.nomeCliente input:hover {
+  border-color: #56270B;
+  background: #F5F1ED;
+}
+
+.nomeCliente input:focus {
+  outline: none;
+  border-color: #663b2B;
+  box-shadow: 0 0 0 2px rgba(86, 39, 11, 0.1);
+}
+
+.nomeCliente label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  font-family: 'Montserrat';
+  color: #56270B;
+}
+
+.valorTotal {
+  text-align: center;
+  padding: 0.2rem 0;
+}
+
+.valorTotal label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #56270B;
+}
+
+/* Estilos para Forma de Pagamento e Status */
+.formaPagamento,
+.statusPedido {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  padding: 0.35rem 0;
+  border-bottom: #56270B 1px solid;
+}
+
+.formaPagamento label,
+.statusPedido label {
+  font-family: 'Montserrat';
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #56270B;
+  margin-bottom: 4px;
+}
+
+.formaPagamento select,
+.statusPedido select {
+  height: 36px;
+  width: 100%;
+  border-radius: 6px;
+  border: 2px solid #76533E;
+  padding: 4px 8px;
+  background: #EFE9E5;
+  color: #3A1709;
+  font-family: 'Montserrat';
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.formaPagamento select:hover,
+.statusPedido select:hover {
+  border-color: #56270B;
+  background: #F5F1ED;
+}
+
+.formaPagamento select:focus,
+.statusPedido select:focus {
+  outline: none;
+  border-color: #663b2B;
+  box-shadow: 0 0 0 2px rgba(86, 39, 11, 0.1);
+}
+
+/* ====== BOTÃO ====== */
+button {
+  width: 100%;
+  background-color: #663b2B;
+  color: #FFFFFF;
+  font-family: 'Montserrat';
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem;
+  cursor: pointer;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); */
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #56270B;
+}
+
+/* ====== TÍTULOS ====== */
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #663b2b;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #56270B;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ====== TABELA ====== */
+.tabelaContainer {
+  margin: 0 auto;
+  width: 95%;
+  max-height: 76%;
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #D1C8C2;
+
+  scrollbar-color: #56270B #D1C8C2;
+  scrollbar-width: thin
+}
+
+.tabelaContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Montserrat';
+  font-size: 1rem;
+}
+
+.tabelaContainer thead {
+  background-color: #56270B;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.tabelaContainer th,
+.tabelaContainer td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #D1C8C2;
+}
+
+.tabelaContainer th {
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background-color: #56270B;
+  z-index: 10;
+}
+
+.tabelaContainer td {
+  color: #56270B;
+  background-color: #F9F6F3;
+}
+
+.tabelaContainer tbody tr:hover td {
+  background-color: #F0E9E6;
+}

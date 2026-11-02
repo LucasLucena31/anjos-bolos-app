@@ -1,0 +1,179 @@
+/* Container principal do filtro avançado */
+.advancedFilterContainer {
+    position: relative;
+    display: inline-block;
+    margin-left: 35px;
+}
+
+/* Trigger do filtro */
+.filterTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: #fff;
+    border: 2px solid #663b2b;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(102, 59, 43, 0.1);
+}
+
+.filterTrigger:hover {
+    background: #f9f7f4;
+    border-color: #4d2c0c;
+    box-shadow: 0 4px 8px rgba(102, 59, 43, 0.15);
+    transform: scale(1.05);
+}
+
+.filterIcon {
+    color: #663b2b;
+    font-size: 1.2rem;
+}
+
+/* Dropdown do filtro */
+.filterDropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 2px solid #663b2b;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(102, 59, 43, 0.2);
+    z-index: 1000;
+    margin-top: 8px;
+    overflow: hidden;
+    animation: slideDown 0.2s ease-out;
+    min-width: 220px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header do dropdown */
+.filterHeader {
+    background: linear-gradient(135deg, #663b2b 0%, #4d2c0c 100%);
+    color: white;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filterHeader h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+/* Container das opções */
+.filterOptions {
+    max-height: 280px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.filterOptions::-webkit-scrollbar {
+    width: 6px;
+}
+
+.filterOptions::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.filterOptions::-webkit-scrollbar-thumb {
+    background: #663b2b;
+    border-radius: 3px;
+}
+
+.filterOptions::-webkit-scrollbar-thumb:hover {
+    background: #4d2c0c;
+}
+
+/* Opções individuais */
+.filterOption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.filterOption:last-child {
+    border-bottom: none;
+}
+
+.filterOption:hover {
+    background: #f9f7f4;
+    transform: translateX(2px);
+}
+
+.filterOption.active {
+    background: linear-gradient(135deg, rgba(102, 59, 43, 0.1) 0%, rgba(77, 44, 12, 0.1) 100%);
+    border-left: 4px solid #663b2b;
+    font-weight: 600;
+}
+
+.optionIcon {
+    color: #663b2b;
+    font-size: 1rem;
+    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.optionLabel {
+    color: #4a4a4a;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.filterOption.active .optionLabel {
+    color: #663b2b;
+}
+
+.checkmark {
+    color: #663b2b;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .filterTrigger {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .filterIcon {
+        font-size: 1.1rem;
+    }
+    
+    .filterDropdown {
+        right: -50px;
+        min-width: 200px;
+    }
+    
+    .filterOption {
+        padding: 10px 14px;
+    }
+    
+    .optionLabel {
+        font-size: 0.85rem;
+    }
+}

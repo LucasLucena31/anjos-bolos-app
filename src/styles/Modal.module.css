@@ -1,0 +1,136 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    position: relative;
+    min-width: 320px;
+    max-width: 90%;
+    background-color: transparent;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+
+    h2 {
+        color: #663b2b;
+    }
+
+    h3 {
+        color: #663b2b;
+    }
+}
+
+.button-fechar {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    top: 12px;
+    right: 12px;
+    transform: translateY(0);
+    background: linear-gradient(145deg, #c86363 0%, #a63838 100%);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(166, 56, 56, 0.35);
+    z-index: 10;
+}
+
+.button-fechar:hover {
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 10px 28px rgba(166, 56, 56, 0.45);
+}
+
+.button-fechar:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.button-fechar img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+.modal h1 {
+    margin: 6px 0 0 0;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+}
+
+/* estilos aplicados aos inputs/select/labels dentro do modal */
+.modal label {
+    display: block;
+    font-size: 0.95rem;
+    color: #56270B;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 2px solid #c4b5a3;
+    background-color: white;
+    color: #4a4a4a;
+    font-size: 0.95rem;
+}
+
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+    outline: none;
+    border-color: #8b5a2b;
+}
+
+/* colorir o ícone do date-picker (Chrome/Edge/Safari) dentro do modal */
+.modal input[type="date"]::-webkit-calendar-picker-indicator {
+    /* filter aproximado para transformar o ícone em marrom (#56270B) */
+    filter: invert(19%) sepia(45%) saturate(540%) hue-rotate(325deg) brightness(92%) contrast(88%);
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+/* tentativa para Firefox (quando suportado) */
+.modal input[type="date"]::-moz-calendar-picker-indicator {
+    filter: invert(19%) sepia(45%) saturate(540%) hue-rotate(325deg) brightness(92%) contrast(88%);
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+.modal button {
+    background-color: #B57575;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.modal .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.button-fechar img {
+    width: 16px;
+    height: 16px;
+}

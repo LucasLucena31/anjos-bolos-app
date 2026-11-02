@@ -1,0 +1,129 @@
+@import '../styles/fonts/fonts.css';
+
+.pageContainer {
+  background: #f9f7f4;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.headerContainer {
+  padding: 12px 16px 0 16px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.voltarButton {
+  background: #6b3200;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  gap: 6px;
+}
+
+.voltarButton:hover {
+  background: #56270b;
+  transform: translateY(-1px);
+}
+
+.voltarButton:active {
+  transform: translateY(0);
+  opacity: 0.95;
+}
+
+.voltarIcon {
+  font-size: 0.85rem;
+}
+
+.cadastro {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 30px 16px 60px;
+}
+
+.container {
+  width: 100%;
+  max-width: 760px;
+  padding: 32px 48px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #d9cfc7 0%, #cbbfb7 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(77, 34, 0, 0.2);
+  box-shadow: 0 25px 60px rgba(98, 60, 32, 0.15);
+  gap: 18px;
+}
+
+.container h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #663b2b;
+  margin: 0 0 10px 0;
+}
+
+.input-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+select {
+  width: 350px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  color: #663b2b;
+  border: 2px solid #c4b5a3;
+  border-radius: 10px;
+  outline: none;
+  background-color: #fff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #7a2e12;
+  box-shadow: 0 12px 25px rgba(122, 46, 18, 0.15);
+  transform: translateY(-1px);
+}
+
+
+.container .input {
+  width: 320px !important;
+}
+
+.container button {
+  min-width: 150px !important;
+  padding: 10px 22px !important;
+  font-size: 1.3rem !important;
+}

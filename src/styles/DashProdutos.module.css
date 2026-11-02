@@ -1,0 +1,601 @@
+/* Filtros externos */
+.filterDropdown {
+	position: absolute;
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+	z-index: 1000;
+	min-width: 250px;
+	max-width: 300px;
+	max-height: 400px;
+	padding: 16px;
+	border: 2px solid;
+	margin-top: 8px;
+	overflow: hidden;
+	right: 0;
+	top: 60px;
+}
+
+.filterOptionsContainer {
+	max-height: 280px;
+	overflow-y: auto;
+	margin: 8px 0;
+	padding-right: 8px;
+}
+
+.filterOptionsContainer::-webkit-scrollbar {
+	width: 6px;
+	background: transparent;
+}
+
+.filterOptionsContainer::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 10px;
+	margin: 5px;
+}
+
+.filterOptionsContainer::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #a0a0a0 0%, #808080 100%);
+	border-radius: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.filterOptionsContainer::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #909090 0%, #707070 100%);
+}
+
+.filterDropdownRecomend {
+	border-color: #9D4F4F;
+	height: 200px;
+	padding: 12px 16px;
+	display: flex;
+	flex-direction: column;
+}
+
+.filterDropdownRecomend .filterTitle {
+	margin-bottom: 8px;
+	padding-bottom: 6px;
+	flex-shrink: 0;
+}
+
+.filterDropdownRecomend .filterOptionsContainer {
+	max-height: none;
+	height: calc(100% - 50px);
+	overflow-y: auto;
+	flex: 1;
+}
+
+.filterDropdownCategorias {
+	border-color: #4d2c0c;
+	height: 180px;
+	padding: 12px 16px;
+	display: flex;
+	flex-direction: column;
+	right: 200px;
+}
+
+.filterDropdownCategorias .filterTitle {
+	margin-bottom: 8px;
+	padding-bottom: 6px;
+	flex-shrink: 0;
+}
+
+.filterDropdownCategorias .filterOptionsContainer {
+	max-height: none;
+	height: calc(100% - 50px);
+	overflow-y: auto;
+	flex: 1;
+}
+
+.filterTitle {
+	font-size: 1.1rem;
+	font-weight: 700;
+	margin-bottom: 12px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.filterTitleRecomend {
+	color: #9D4F4F;
+}
+
+.filterTitleCategorias {
+	color: #4d2c0c;
+}
+
+.filterOption {
+	display: flex;
+	align-items: center;
+	padding: 8px 0;
+	cursor: pointer;
+	transition: background 0.2s;
+	border-radius: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.filterOption:hover {
+	background: #f8f8f8;
+}
+
+.filterOption input {
+	margin-right: 10px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+
+.filterOption label {
+	color: #4d2c0c;
+	font-weight: 600;
+	font-size: 0.95rem;
+	cursor: pointer;
+	flex: 1;
+}
+
+/* Títulos de seção padronizados igual DashVendas */
+.sectionTitle {
+	font-size: 1.6rem;
+	color: #4d2c0c;
+	font-weight: 700;
+	margin-bottom: 8px;
+	text-align: center;
+	font-family: 'Montserrat', Arial, sans-serif;
+	letter-spacing: 0.2px;
+}
+
+/* Wrapper para tabela de recomendações com scroll */
+.recomendTableWrapper {
+	max-height: 130px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-radius: 16px;
+	border: 2px solid #9D4F4F;
+	box-shadow: 0 2px 8px #0001;
+	display: block;
+}
+
+.recomendTableWrapper::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+.recomendTableWrapper::-webkit-scrollbar-track {
+	background: #f0f0f0;
+	border-radius: 10px;
+}
+
+.recomendTableWrapper::-webkit-scrollbar-thumb {
+	background: #9D4F4F;
+	border-radius: 10px;
+}
+
+.recomendTableWrapper::-webkit-scrollbar-thumb:hover {
+	background: #7d3f3f;
+}
+
+/* Tabela de recomendações harmonizada */
+.recomendTable {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	background: #fff;
+	font-size: 1.08rem;
+	margin: 0;
+	display: table;
+	table-layout: fixed;
+}
+
+.recomendTable thead {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: #9D4F4F;
+}
+
+.recomendTable th, .recomendTable td {
+	padding: 8px 12px;
+	text-align: center;
+	word-wrap: break-word;
+	white-space: normal;
+	vertical-align: middle;
+}
+
+/* Larguras específicas para cada coluna */
+.recomendTable th:nth-child(1),
+.recomendTable td:nth-child(1) {
+	width: 15%;
+}
+
+.recomendTable th:nth-child(2),
+.recomendTable td:nth-child(2) {
+	width: 35%;
+}
+
+.recomendTable th:nth-child(3),
+.recomendTable td:nth-child(3) {
+	width: 25%;
+}
+
+.recomendTable th:nth-child(4),
+.recomendTable td:nth-child(4) {
+	width: 25%;
+}
+.recomendTable th {
+	background: #9D4F4F;
+	color: #fff;
+	font-weight: 700;
+	font-size: 1.12rem;
+	border-bottom: 2px solid #9D4F4F;
+	border-right: 1px solid #fff;
+}
+.recomendTable th:last-child {
+	border-right: none;
+}
+.recomendTable tr {
+	border-bottom: 2px solid #9D4F4F;
+	transition: background 0.2s;
+}
+.recomendTable tr:last-child {
+	border-bottom: none;
+}
+.recomendTable tr:hover {
+	background: #e6b0b0;
+}
+.recomendTable td {
+	color: #4d2c0c;
+	font-weight: 600;
+	background: #fff;
+	border-right: 1px solid #e6b07a;
+}
+.recomendTable td:last-child {
+	border-right: none;
+}
+
+/* Tabela de categorias - mesmo estilo da tabela de recomendações */
+.categoriasTable {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 2px 8px #0001;
+	font-size: 1.08rem;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 2px solid #4d2c0c;
+	height: 180px;
+	display: block;
+	overflow-y: auto;
+}
+
+.categoriasTable::-webkit-scrollbar {
+	width: 6px;
+	background: transparent;
+}
+
+.categoriasTable::-webkit-scrollbar-track {
+	background: rgba(77, 44, 12, 0.1);
+	border-radius: 10px;
+	margin: 5px;
+}
+
+.categoriasTable::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #6b3a13 0%, #4d2c0c 100%);
+	border-radius: 10px;
+	border: 1px solid rgba(77, 44, 12, 0.2);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.categoriasTable::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #8b4a1b 0%, #5d3410 100%);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.categoriasTable thead,
+.categoriasTable tbody,
+.categoriasTable tr {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.categoriasTable thead {
+	width: 100%;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.categoriasTable th, .categoriasTable td {
+	padding: 8px 18px;
+	text-align: center;
+	border-right: 1px solid #fff;
+	box-sizing: border-box;
+}
+
+.categoriasTable th {
+	background: #4d2c0c;
+	color: #fff;
+	font-weight: 700;
+	font-size: 1.12rem;
+	border-bottom: 2px solid #4d2c0c;
+}
+
+.categoriasTable th:last-child {
+	border-right: none;
+}
+
+.categoriasTable tr {
+	border-bottom: 1px solid #e6b07a;
+	transition: background 0.2s;
+}
+
+.categoriasTable tr:last-child {
+	border-bottom: none;
+}
+
+.categoriasTable tr:hover {
+	background: #f5f1ec;
+}
+
+.categoriasTable td {
+	color: #4d2c0c;
+	font-weight: 600;
+	background: #fff;
+	border-right: 1px solid #e6b07a;
+}
+
+.categoriasTable td:last-child {
+	border-right: none;
+}
+
+/* Centralizar inputs de data */
+.periodoInputs {
+	display: flex;
+	gap: 14px;
+	justify-content: center;
+	width: 100%;
+}
+
+/* Cards: diminuir gap e margens */
+.dashCards {
+	display: flex;
+	gap: 32px;
+	margin: 8px 0 0 0;
+	width: 100%;
+	max-width: 100px;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 1100px) {
+	.dashCards {
+		flex-direction: column;
+		gap: 14px;
+	}
+	.dashMain {
+		flex-direction: column;
+		height: auto;
+	}
+	.dashContent {
+		padding: 18px 8px 0 8px;
+	}
+	.dashPeriodo, .dashCards, .dashGrafico {
+		max-width: 98vw;
+	}
+	.dashGrafico, .graficoPlaceholder {
+		max-width: 98vw;
+	}
+}
+
+/* Container principal */
+.dashContainer {
+	background: #f9f7f4;
+	min-height: 100vh;
+	font-family: 'Montserrat', Arial, sans-serif;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.dashMain {
+	display: flex;
+	flex-direction: row;
+	margin-top: 0;
+	height: calc(100vh - 80px);
+	width: 100vw;
+	overflow: hidden;
+}
+
+/* Sidebar */
+/* Movido para DashSidebar.module.css */
+
+/* Conteúdo principal */
+.dashContent {
+	flex: 1;
+	padding: 32px 32px 0 32px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%;
+.dashMain {
+	overflow: hidden;
+}
+	overflow: hidden;
+}
+
+
+.dashGrafico {
+	box-sizing: border-box;
+	margin: 18px 0 10px 0;
+	width: 100%;
+	max-width: 1100px;
+}
+
+.dashPeriodo h2 {
+	font-size: 1.6rem;
+	color: #4d2c0c;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+.periodoInputs {
+	display: flex;
+	gap: 14px;
+}
+
+.periodoDate {
+	display: flex;
+	align-items: center;
+	background: #4d2c0c;
+	border: 1.5px solid #4d2c0c;
+	border-radius: 8px;
+	padding: 5px 18px 5px 14px;
+	font-size: 1.08rem;
+	color: #fff;
+	font-weight: 600;
+	margin-bottom: 6px;
+	min-width: 140px;
+	min-height: 32px;
+	position: relative;
+	cursor: pointer;
+}
+.calendarIcon {
+	font-size: 1.2rem;
+	margin-right: 7px;
+	color: #fff;
+	z-index: 1;
+}
+.datePlaceholder {
+	color: #fff;
+	opacity: 0.85;
+	font-size: 1.04rem;
+	font-weight: 600;
+	font-family: inherit;
+	pointer-events: none;
+	z-index: 1;
+}
+.dateValue {
+	color: #fff;
+	font-size: 1.08rem;
+	font-weight: 600;
+	font-family: inherit;
+	z-index: 1;
+}
+.invisibleDateInput {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 2;
+	border: none;
+	background: transparent;
+}
+
+/* Cards */
+.dashCards {
+	display: flex;
+	gap: 24px;
+	margin: 0 0 0 0;
+	width: 100%;
+	max-width: 900px;
+	justify-content: center;
+}
+.dashCard {
+	background: #fff;
+	border: 2.5px solid #6b3a13;
+	border-radius: 18px;
+	width: 100%;
+	max-width: 800px;
+	max-height: 250px;
+	flex-direction: column;
+	align-items: center;
+	padding: 0;
+	box-shadow: none;
+}
+.dashCardTitle {
+	width: 100%;
+	text-align: center;
+	font-size: 1.13rem;
+	font-weight: 700;
+	padding: 12px 0 8px 0;
+	border-radius: 18px 18px 0 0;
+	letter-spacing: 0.2px;
+}
+.dashCardTitleVendido {
+	background: #a86b32;
+	color: #fff;
+}
+.dashCardTitleTotal {
+	background: #4d2c0c;
+	color: #fff;
+}
+.dashCardTitleDia {
+	background: #a86b32;
+	color: #fff;
+}
+.dashCardContent {
+	font-size: 1.08rem;
+	font-weight: 700;
+	color: #6b3a13;
+	text-align: center;
+	padding: 10px 8px 10px 8px;
+	min-height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Gráfico */
+.dashGrafico {
+	margin-top: 0;
+	width: 100%;
+	max-width: 900px;
+	
+}
+.dashGrafico h2 {
+	font-size: 1.4rem;
+	color: #4d2c0c;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+.graficoPlaceholder {
+	background: #fff;
+	border: 2px solid #a86b32;
+	border-radius: 14px;
+	padding: 16px;
+	min-height: 140px;
+	height: 220px;
+	margin-bottom: 18px;
+	width: 100%;
+	max-width: 230px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+	.dashCards {
+		flex-direction: column;
+		gap: 14px;
+	}
+	.dashMain {
+		flex-direction: column;
+		height: auto;
+	}
+	.dashContent {
+		padding: 18px 8px 0 8px;
+	}
+	.dashPeriodo, .dashCards, .dashGrafico {
+		max-width: 98vw;
+	}
+	.dashGrafico, .graficoPlaceholder {
+		max-width: 98vw;
+	}
+}

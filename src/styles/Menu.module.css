@@ -1,0 +1,492 @@
+.MenuContainer {
+	height: 100vh;
+	width: 100vw;
+	background: #fff;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.centerContentMenu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	flex: 1;
+    width: 100%;
+	padding: 60px 20px 10px 20px;
+	overflow: hidden;
+}
+
+.title {
+	font-size: 2rem;
+	font-family: 'Montserrat', sans-serif;
+	color: #6b3200;
+	font-weight: 700;
+	margin-bottom: 20px;
+	margin-top: -15px;
+	text-align: center;
+}
+
+.cardGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 200px);
+	grid-template-rows: repeat(2, 200px);
+	gap: 24px;
+	margin-bottom: 0;
+	margin-top: 35px;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Quando há apenas 4 cards - grid 2x2 */
+.cardGrid:not(:has(.modernCard:nth-child(5))) {
+	grid-template-columns: repeat(2, 200px);
+	grid-template-rows: repeat(2, 200px);
+}
+
+.cardGrid .modernCard:nth-child(1) {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.cardGrid .modernCard:nth-child(2) {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.cardGrid .modernCard:nth-child(3) {
+	grid-column: 3;
+	grid-row: 1;
+}
+
+/* Quando 4 cards - card 3 fica na posição 1,2 */
+.cardGrid:not(:has(.modernCard:nth-child(5))) .modernCard:nth-child(3) {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+.cardGrid .modernCard:nth-child(4) {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+/* Quando 4 cards - card 4 fica na posição 2,2 */
+.cardGrid:not(:has(.modernCard:nth-child(5))) .modernCard:nth-child(4) {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+.cardGrid .modernCard:nth-child(5) {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+.cardGrid .modernCard:nth-child(6) {
+	grid-column: 3;
+	grid-row: 2;
+}
+
+/* Cards Modernos */
+.modernCard {
+	background: #f5f1ed;
+	border-radius: 20px;
+	border: 2.5px solid #c4b5a3;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 12px 0 12px;
+	box-shadow: 0 4px 20px rgba(107, 50, 0, 0.12), 
+	            0 2px 8px rgba(0, 0, 0, 0.06);
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	cursor: pointer;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.modernCard::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(139, 90, 43, 0.08) 0%, rgba(77, 34, 0, 0.08) 100%);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: 0;
+}
+
+.modernCard:hover {
+	transform: translateY(-8px) scale(1.03);
+	box-shadow: 0 12px 35px rgba(107, 50, 0, 0.18),
+	            0 4px 12px rgba(0, 0, 0, 0.1),
+	            0 0 0 3px rgba(139, 90, 43, 0.4);
+	border-color: #8b5a2b;
+}
+
+.modernCard:hover::before {
+	opacity: 1;
+}
+
+.modernCard:active {
+	transform: translateY(-4px) scale(0.98);
+}
+
+.cardIcon {
+	width: 70px;
+	height: 70px;
+	object-fit: contain;
+	margin-bottom: auto;
+	margin-top: 8px;
+	transition: transform 0.3s ease;
+	z-index: 1;
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.modernCard:hover .cardIcon {
+	transform: scale(1.12) translateY(-4px);
+}
+
+.cardLabel {
+	width: calc(100% + 24px);
+	background: #4d2200;
+	color: #fff;
+	font-size: 0.95rem;
+	font-weight: 600;
+	text-align: center;
+	padding: 14px 10px;
+	letter-spacing: 0.02em;
+	font-family: 'Montserrat', sans-serif;
+	border-radius: 0 0 17px 17px;
+	position: relative;
+	margin: 0 -12px;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+	z-index: 1;
+	line-height: 1.3;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Garante que o label do card 5 tenha o mesmo tamanho */
+.cardGrid .modernCard:nth-child(5) .cardLabel {
+	width: calc(100% + 24px);
+	margin: 0 -12px;
+}
+
+.menuButton {
+	width: fit-content;
+	min-width: 100px;
+	padding: 10px 0;
+	border-radius: 8px;
+	background-color: #4d2200;
+	color: #fff;
+	font-size: 1.15rem;
+	font-weight: 600;
+	text-align: center;
+	border: none;
+	font-family: 'Montserrat', sans-serif;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.menuButton:hover {
+	background-color: #76533E;
+}
+
+/* Card de Notificações Fixo */
+@keyframes slideInFromRight {
+    from {
+        transform: translateY(-50%) translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-50%) translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bellRing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: rotate(-10deg);
+    }
+    20%, 40%, 60%, 80% {
+        transform: rotate(10deg);
+    }
+}
+
+.notificationCard {
+    position: fixed;
+    top: 42%;
+    transform: translateY(-50%) translateX(100%);
+    right: 30px;
+    width: 300px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 
+                0 0 0 1px rgba(0, 0, 0, 0.06);
+    padding: 12px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(107, 50, 0, 0.08);
+    cursor: pointer;
+    user-select: none;
+}
+
+.notificationCard:hover {
+    transform: translateY(-50%) translateX(0) scale(1.02);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18), 
+                0 0 0 2px rgba(139, 90, 43, 0.3);
+    border-color: rgba(139, 90, 43, 0.2);
+}
+
+.notificationShow {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+    animation: slideInFromRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.notificationHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid rgba(107, 50, 0, 0.08);
+}
+
+.bellIconContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+    border-radius: 10px;
+}
+
+.bellIcon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    animation: bellRing 3s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.notificationBadge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #f44336;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(244, 67, 54, 0.3);
+}
+
+.notificationTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6b3200;
+    margin: 0;
+}
+
+.notificationBody {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.notificationItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 8px;
+    background: rgba(107, 50, 0, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(107, 50, 0, 0.12);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.notificationItem:hover {
+    background: rgba(107, 50, 0, 0.06);
+    border-color: rgba(107, 50, 0, 0.2);
+    transform: translateX(-3px);
+}
+
+.notificationDotOrange {
+    min-width: 8px;
+    min-height: 8px;
+    background: #ff9800;
+    border-radius: 50%;
+    margin-top: 5px;
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.15);
+}
+
+.notificationDotRed {
+    min-width: 8px;
+    min-height: 8px;
+    background: #f44336;
+    border-radius: 50%;
+    margin-top: 5px;
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.15);
+}
+
+.notificationText {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #4d2200;
+    line-height: 1.4;
+    text-align: left;
+    flex: 1;
+}
+
+.notificationText strong {
+    font-weight: 700;
+    color: #6b3200;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .notificationCard {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .centerContentMenu {
+        padding: 24px 12px 16px 12px;
+        min-height: calc(100vh - 60px);
+        justify-content: flex-start;
+    }
+
+    .title {
+        margin-top: 10px;
+        margin-bottom: 32px;
+    }
+
+    .cardGrid {
+        grid-template-columns: repeat(2, 160px);
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    /* Quando há 5 cards no mobile */
+    .cardGrid:has(.modernCard:nth-child(5)) {
+        grid-template-columns: repeat(2, 160px);
+        grid-template-rows: repeat(3, 160px);
+    }
+
+    .cardGrid .modernCard:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .cardGrid .modernCard:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .cardGrid .modernCard:nth-child(3) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .cardGrid .modernCard:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .cardGrid .modernCard:nth-child(5) {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        justify-self: center;
+        max-width: 160px;
+    }
+
+    .modernCard {
+        padding: 16px 10px 0 10px;
+    }
+
+    .cardIcon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .cardLabel {
+        font-size: 0.85rem;
+        padding: 10px 8px;
+        width: calc(100% + 20px);
+        margin: 0 -10px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        margin-top: 5px;
+        margin-bottom: 24px;
+    }
+
+    .cardGrid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 180px);
+        max-width: 200px;
+        gap: 14px;
+    }
+
+    /* Quando há 5 cards no mobile pequeno */
+    .cardGrid:has(.modernCard:nth-child(5)) {
+        grid-template-rows: repeat(5, 180px);
+    }
+
+    .cardGrid .modernCard:nth-child(1),
+    .cardGrid .modernCard:nth-child(2),
+    .cardGrid .modernCard:nth-child(3),
+    .cardGrid .modernCard:nth-child(4),
+    .cardGrid .modernCard:nth-child(5) {
+        grid-column: 1;
+        grid-row: auto;
+        max-width: 100%;
+    }
+
+    .modernCard {
+        padding: 18px 12px 0 12px;
+    }
+
+    .cardIcon {
+        width: 65px;
+        height: 65px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+}

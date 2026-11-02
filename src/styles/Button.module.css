@@ -1,0 +1,21 @@
+.button {
+    width: fit-content;
+    min-width: 64px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #663b2b;
+    border-radius: 10px;
+    border: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #9c573d;
+}
+
+.button:focus {
+    background-color: #9c573d;
+    outline: none;
+}
